@@ -35,9 +35,6 @@
             <li onclick="showAdhkar()">
                 <h2>أذكار متنوعة</h2>
             </li>
-            <li onclick="readQuran()">
-                <h2>قراءة قران</h2>
-            </li>
             <li>
                 <a href="https://m010099oh-cpu.github.io/Holy-Quran/">استماع قران</a>
             </li>
@@ -53,21 +50,17 @@
         </ul>
         </div>
         <div class="content">
-            <ul>
-
-            </ul>
+            
         </div>
     </div>
 
     <style>
-
          
          * {
             padding: 0;
             margin: 0;
             font-family: "Almarai", sans-serif;
          }
-
         body {
             width: 100%;
             height: 100vh;
@@ -83,11 +76,11 @@
             width: 100%;
             height: 50%;
             overflow: scroll;
-            scrollbar-width: none;
             background-color: white;
             border-radius: 0px 0px 20px 20px;
             resize: vertical;
             max-height: 50%;
+            border-radius: 20px;
         }
         body .mainDiv .ulParent ul li a {
             text-decoration: none;
@@ -105,19 +98,17 @@
             gap: 10px;
             overflow: scroll;
             scrollbar-width: none;
+            border-radius: 20px;
         }
         body .mainDiv .content {
             width: 100%;
             overflow-y: scroll;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             flex: 1;
             background-image: url(./—Pngtree—islamic\ background\ with\ mandala\ motif_1965455.png);
             background-size: 100% 100%;
             background-repeat: no-repeat;
             scrollbar-width: 5px;
-            
+            scrollbar-width: none;
         }
         body .mainUL :where(li) {
             width: 90%;
@@ -138,18 +129,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        body .content ul {
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: center;
-            align-items: center;
-        }
-        body .content ul div {
-            
+        body .content div {
             font-size: 30px;
             background-color: rgb(255, 238, 216);
             padding: 20px;
@@ -158,14 +138,14 @@
             box-shadow: 0px 0px 20px 5px gray;
             width: 70%;
             direction: rtl;
-            display: flex;
-            justify-content: space-between;
-            height: 70px;
+            height: fit-content;
+            line-height: 70px;
+            margin: auto;
         }
-        body .content ul .adhkar {
+        body .content .adhkar {
             flex-direction: column;
         }
-        body .content ul .adhkar p {
+        body .content .adhkar p {
             background-color: rgba(0, 128, 0, 0.512);
             color: white;
             width: fit-content;
@@ -253,7 +233,7 @@
 ];
         function firstFunction(){
             console.log("hello")
-            content.firstElementChild.innerHTML = `
+            content.innerHTML = `
         
                 <div>شهادة أن لا اله الا الله و أن محمدا رسول الله</div>
                 <div>اقام الصلاة</div>
@@ -264,7 +244,7 @@
             `
         }
         function secondFunction(){
-            content.firstElementChild.innerHTML = `
+            content.innerHTML = `
     
                 <div>الإيمان بالله</div>
                 <div>الإيمان بالملائكة</div>
@@ -276,7 +256,7 @@
             `
         }
         function namseOfAllah(){
-            content.firstElementChild.innerHTML = `
+            content.innerHTML = `
                         <div>الرَّحْمَٰنُ</div>
                         <div>الرَّحِيمُ</div>
                         <div>الْمَلِكُ</div>
@@ -378,23 +358,33 @@
                     
             `
         }
+        let counter = 0
+        function Zero(){
+            console.log(counter)
+            counter = 0
+            content.querySelector("button").innerHTML = counter
+            localStorage.score = JSON.stringify(counter)
+        }
         function newScore(){
-            content.querySelector("button").innerHTML++
-            localStorage.setItem("score", content.querySelector("button").innerHTML)
+            counter = counter+1
+            content.querySelector("button").innerHTML = counter
+            localStorage.score = JSON.stringify(counter)
         }
         function smartRosary(){
-            localStorage.score = localStorage.score
-            
-            content.firstElementChild.innerHTML = `
+            //localStorage.score = JSON.stringify(counter)
+            counter = Number.parseInt(localStorage.score)
+            content.innerHTML = `
              <button onclick="newScore()">0</button>
-            `//content.querySelector("button").innerHTML
-            content.querySelector("button").innerHTML = localStorage.score
+             <button onclick="Zero()">تصفير</button>
+            `
+            //content.querySelector("button").innerHTML
+            content.querySelector("button").innerHTML = counter
             
         }
-        //localStorage.score = 0
+        //localStorage.clear()
         
         function MorningAndNightPrayes(){
-            content.firstElementChild.innerHTML = `
+            content.innerHTML = `
             
   <div>أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسي]</div>
   <div>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ. (3 مرات)</div>
@@ -433,7 +423,7 @@
             ).then(data => {
                 let t = data.data.timings; // اختصار
 
-    content.firstElementChild.innerHTML = `
+    content.innerHTML = `
     
         <div><span>${t.Fajr}</span>الفجر</div>
         <div><span>${t.Sunrise}</span>الشروق</div>
@@ -449,7 +439,7 @@
             })
         }
         function showAdhkar(){
-            content.firstElementChild.innerHTML = `<ul></ul>`
+            content.innerHTML = ""
             for(let i = 0; i < adhkar.length;i++){
                 let div = document.createElement("div")
                 div.className = "adhkar"
@@ -457,21 +447,10 @@
                  <p>${adhkar[i].title}</p>
                  <main>${adhkar[i].text}</main>
                 `
-                content.firstElementChild.appendChild(div)
+                content.appendChild(div)
             }
         }
     
-        function readQuran(){
-            fetch("https://api.alquran.cloud/v1/quran/alquran-uthmani").then(r=>r.json()).then(data => {
-                console.log(data)
-                for(let i = 0; i < data.data.surahs.length;i++){
-                    console.log(data.data.surahs[i])
-                    let div = document.createElement("div")
-                    div.innerHTML = data.data.surahs[i].name
-                    content.firstElementChild.appendChild(div)
-                }
-            })
-        }
     </script>
 </body>
 </html>
