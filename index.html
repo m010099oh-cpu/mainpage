@@ -383,12 +383,16 @@
             localStorage.setItem("score", content.querySelector("button").innerHTML)
         }
         function smartRosary(){
+            
             content.firstElementChild.innerHTML = `
              <button onclick="newScore()">0</button>
             `
-            //localStorage.score = localStorage.score
+            localStorage.score = localStorage.score
             content.querySelector("button").innerHTML = localStorage.score
+            
+            
         }
+        
         function MorningAndNightPrayes(){
             content.firstElementChild.innerHTML = `
             
