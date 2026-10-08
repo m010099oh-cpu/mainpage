@@ -3,454 +3,1745 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>الموسوعة الإسلامية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-
-    
-    <div class="mainDiv">
-        <div class="ulParent">
-            <ul class="mainUL">
-            <li onclick="firstFunction()" class="one">
-                <h2>أركان الاسلام</h2>
-            </li>
-            <li onclick="secondFunction()" class="two">
-                <h2>أركان الايمان</h2>
-            </li>
-            <li onclick="namseOfAllah()">
-                <h2>أسماء الله الحسنى</h2>
-            </li>
-            <li onclick="smartRosary()">
-                <h2>السبحة الذكية</h2>
-            </li>
-            <li onclick="MorningAndNightPrayes()">
-                <h2>أذكار الصباح و المساء</h2>
-            </li>
-            <li onclick="prayTimes()">
-                <h2>مواقيت الصلاة</h2>
-            </li>
-            <li onclick="showAdhkar()">
-                <h2>أذكار متنوعة</h2>
-            </li>
-            <li>
-                <a href="https://m010099oh-cpu.github.io/Holy-Quran/">استماع قران</a>
-            </li>
-            <li>
-                <a href="https://m010099oh-cpu.github.io/bukhari/">صحيح البخاري</a>
-            </li>
-            <li>
-                <a href="https://m010099oh-cpu.github.io/musdivm/">صحيح مسلم</a>
-            </li>
-            <li>
-                <a href="https://m010099oh-cpu.github.io/prophets/">قصص الأنبياء</a>
-            </li>
-        </ul>
-        </div>
-        <div class="content">
-            
-        </div>
-    </div>
-
     <style>
-         
-         * {
-            padding: 0;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: "Almarai", sans-serif;
-         }
+        }
+
         body {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            position: relative;
+            background:
+                linear-gradient(180deg, rgba(3, 12, 9, 0.83), rgba(7, 30, 20, 0.86)),
+                url("https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+            color: #f8f5ec;
             overflow: hidden;
         }
-        body .mainDiv {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at top, rgba(246, 217, 119, 0.15), transparent 35%),
+                radial-gradient(circle at bottom left, rgba(129, 204, 154, 0.12), transparent 30%),
+                transparent;
+            pointer-events: none;
         }
-        body .mainDiv .ulParent {
+
+        .container {
             width: 100%;
-            height: 50%;
-            overflow: scroll;
-            background-color: white;
-            border-radius: 0px 0px 20px 20px;
-            resize: vertical;
-            max-height: 50%;
-            border-radius: 20px;
-        }
-        body .mainDiv .ulParent ul li a {
-            text-decoration: none;
-            color: rgb(255, 253, 253);
-            margin-left: 10px;
-            width: 100%;
-        }
-        body .mainDiv .ulParent ul {
-            width: 100%;
-            height: 100%;
-            background-color: rgba(252, 252, 252, 0.564);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            overflow: scroll;
-            scrollbar-width: none;
-            border-radius: 20px;
-        }
-        body .mainDiv .content {
-            width: 100%;
-            overflow-y: scroll;
-            flex: 1;
-            background-image: url(./—Pngtree—islamic\ background\ with\ mandala\ motif_1965455.png);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            scrollbar-width: 5px;
-            scrollbar-width: none;
-        }
-        body .mainUL :where(li) {
-            width: 90%;
-            height: 50px;
+            height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            border-radius: 50px;
-            background-color: rgb(0, 128, 0);
+            align-items: stretch;
         }
-        body .mainUL li :where(h2,a) {
-            font-size: 30px;
-            font-weight: 1300;
-            height: 50px;
-            text-align: center;
-            background-image: linear-gradient(to right, yellow, gold 65%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .ulParent {
+            width: 35%;
+            min-width: 300px;
+            background: linear-gradient(180deg, rgba(12, 90, 38, 0.97), rgba(6, 57, 28, 0.98));
+            border-right: 1px solid rgba(255, 215, 120, 0.35);
+            box-shadow: inset -10px 0 28px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 215, 120, 0.08);
         }
-        body .content div {
-            font-size: 30px;
-            background-color: rgb(255, 238, 216);
-            padding: 20px;
-            border-right: rgb(1, 91, 1) sodivd 10px;
-            border-radius: 0px 15px 15px 0px;
-            box-shadow: 0px 0px 20px 5px gray;
-            width: 70%;
+
+        .ulParent input.search {
+            width: calc(100% - 24px);
+            height: 60px;
+            margin: 12px;
+            border: 1px solid rgba(255, 215, 120, 0.72);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: inset 0 0 18px rgba(246, 217, 119, 0.05), 0 10px 20px rgba(0, 0, 0, 0.12);
+            color: #fff;
+            text-align: right;
+            font-size: 24px;
+            padding: 0 18px;
             direction: rtl;
-            height: fit-content;
-            line-height: 70px;
-            margin: auto;
+            outline: none;
         }
-        body .content .adhkar {
-            flex-direction: column;
+
+        .ulParent input.search::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
-        body .content .adhkar p {
-            background-color: rgba(0, 128, 0, 0.512);
-            color: white;
-            width: fit-content;
-            height: fit-content;
-            padding: 3px;
-            border-radius: 30px;
-            font-size: 20px;
-            gap: 10px;
+
+        .ulParent .mainUL {
+            height: calc(100% - 84px);
+            overflow-y: auto;
+            scrollbar-width: none;
+            padding: 8px 10px 20px;
         }
-        body .content button {
-            width: 150px;
-            height: 150px;
-            background-color: green;
-            border: none;
+
+        .ulParent .mainUL li {
+            list-style: none;
+            width: 100%;
+            min-height: 72px;
+            margin: 8px 0;
+            padding: 10px 18px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            border-radius: 100px;
-            font-size: 25px;
-        }/*
-        @media (min-width:0px) and (max-width:600px) {
-            body .mainDiv {
+            text-align: center;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(246, 217, 113, 0.14), rgba(255, 255, 255, 0.04));
+            border: 1px solid rgba(255, 215, 120, 0.38);
+            color: #f9d870;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .ulParent .mainUL li:hover {
+            background: linear-gradient(135deg, rgba(255, 215, 120, 0.25), rgba(255, 255, 255, 0.06));
+            transform: translateY(-1px);
+        }
+
+        .ulParent .mainUL li.active {
+            background: linear-gradient(135deg, rgba(255, 215, 120, 0.28), rgba(255, 255, 255, 0.08));
+            border-color: rgba(255, 215, 120, 0.7);
+        }
+
+        .content {
+            width: 65%;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            background: rgba(255, 250, 239, 0.04);
+            overflow: hidden;
+        }
+
+        .content .hero {
+            padding: 22px 26px 18px;
+            border-bottom: 1px solid rgba(255, 215, 120, 0.35);
+            background: linear-gradient(180deg, rgba(13, 46, 27, 0.9), rgba(8, 35, 21, 0.95));
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.14);
+        }
+
+        .content .hero h1 {
+            text-align: center;
+            font-size: clamp(28px, 3vw, 42px);
+            color: #f6d977;
+            margin-bottom: 12px;
+        }
+
+        .content .hero p {
+            text-align: center;
+            color: #f4efe2;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .hero-tools {
+            display: flex;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        .theme-toggle {
+            border: 1px solid rgba(255, 215, 120, 0.52);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 18px;
+            border-radius: 999px;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .content-area {
+            overflow-y: auto;
+            padding: 24px;
+            scrollbar-width: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        }
+
+        .overview-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .overview-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 215, 120, 0.25);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .overview-card h3 {
+            color: #f6d977;
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 26px;
+        }
+
+        .overview-card p,
+        .overview-card li {
+            color: #f5efe5;
+            line-height: 1.8;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .overview-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .prayer-method {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 10px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 215, 120, 0.35);
+            border-radius: 12px;
+            background: rgba(7, 23, 17, 0.72);
+            color: #f5e9c8;
+            font-size: 15px;
+            direction: rtl;
+        }
+
+        .prayer-load {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 10px;
+            padding: 9px 14px;
+            border: 1px solid rgba(214, 176, 98, 0.55);
+            border-radius: 12px;
+            background: rgba(214, 176, 98, 0.14);
+            color: #f3dfaf;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .prayer-load:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        .prayer-status {
+            margin-top: 10px;
+            color: #f5efe5;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: right;
+        }
+
+        .prayer-next {
+            margin-top: 10px;
+            color: #f6d977;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .prayer-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .prayer-time {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 9px 10px;
+            border: 1px solid rgba(255, 215, 120, 0.16);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #f5efe5;
+            font-size: 14px;
+        }
+
+        .overview-card .mini-label {
+            display: inline-block;
+            color: #f6d977;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .quick-links button,
+        .favorite-button {
+            border: 1px solid rgba(255, 215, 120, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .quick-links button:hover,
+        .favorite-button:hover {
+            transform: translateY(-1px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .favorite-button {
+            flex-shrink: 0;
+            font-size: 22px;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .favorite-button.active {
+            background: rgba(246, 217, 119, 0.2);
+            border-color: rgba(246, 217, 119, 0.8);
+            color: #f6d977;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .menu-item-title {
+            flex: 1;
+            text-align: center;
+        }
+
+        .theme-light {
+            background: linear-gradient(rgba(249, 244, 231, 0.8), rgba(249, 244, 231, 0.8)), url("https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+            color: #183f2a;
+        }
+
+        .theme-light .ulParent {
+            background: linear-gradient(180deg, rgba(236, 244, 216, 0.96), rgba(198, 222, 181, 0.96));
+            border-right-color: rgba(35, 92, 64, 0.38);
+            box-shadow: inset -10px 0 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .theme-light .mainUL li,
+        .theme-light .card,
+        .theme-light .overview-card,
+        .theme-light .article-box,
+        .theme-light .smart-rosary {
+            border-color: rgba(19, 92, 55, 0.25);
+            box-shadow: 0 8px 16px rgba(14, 48, 25, 0.08);
+        }
+
+        .theme-light .smart-rosary {
+            background: linear-gradient(180deg, rgba(221, 234, 214, 0.92), rgba(202, 224, 191, 0.92));
+        }
+
+        .theme-light .content .hero,
+        .theme-light .content {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .theme-light .theme-toggle,
+        .theme-light .ulParent input.search,
+        .theme-light .rosary-select,
+        .theme-light .prayer-method,
+        .theme-light .prayer-load,
+        .theme-light .quick-links button,
+        .theme-light .favorite-button {
+            background: rgba(20, 95, 45, 0.08);
+            color: #183f2a;
+            border-color: rgba(20, 95, 45, 0.28);
+        }
+
+        .theme-light .mainUL li,
+        .theme-light .card li,
+        .theme-light .article-box,
+        .theme-light .overview-card p,
+        .theme-light .overview-card li,
+        .theme-light .card p {
+            color: #183f2a;
+        }
+
+        .theme-light .content .hero h1,
+        .theme-light .card h3,
+        .theme-light .overview-card h3,
+        .theme-light .prayer-next,
+        .theme-light .rosary-header,
+        .theme-light .rosary-target,
+        .theme-light .rosary-message {
+            color: #144c2b;
+        }
+
+        .theme-light .prayer-status,
+        .theme-light .prayer-time {
+            color: #183f2a;
+        }
+
+        .theme-light .prayer-time {
+            background: rgba(20, 95, 45, 0.04);
+            border-color: rgba(20, 95, 45, 0.16);
+        }
+
+        .theme-light .rosary-number {
+            color: #183f2a;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255, 215, 120, 0.25);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15), inset 0 0 18px rgba(255,255,255,0.02);
+        }
+
+        .card h3 {
+            color: #f6d977;
+            font-size: 26px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card li {
+            color: #f5efe5;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 10px 12px;
+            text-align: right;
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #f5efe5;
+            line-height: 1.9;
+            text-align: right;
+            font-size: 18px;
+        }
+
+        .article-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 120, 0.18);
+            border-radius: 16px;
+            padding: 18px;
+            margin-top: 18px;
+            color: #f5efe5;
+            line-height: 1.9;
+            font-size: 22px;
+            text-align: right;
+        }
+
+        .smart-rosary {
+            background: linear-gradient(180deg, rgba(12, 34, 25, 0.96), rgba(7, 23, 17, 0.98));
+            border: 1px solid rgba(214, 176, 98, 0.5);
+            border-radius: 22px;
+            padding: 20px 18px 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.26), inset 0 0 30px rgba(214, 176, 98, 0.05);
+        }
+
+        .rosary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            color: #ead39a;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .rosary-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .rosary-btn {
+            width: 72px;
+            height: 72px;
+            border: none;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #f0d185, #c9922f);
+            color: #122d1f;
+            font-size: 38px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 22px rgba(192, 145, 58, 0.34), inset 0 0 12px rgba(255,255,255,0.2);
+        }
+
+        .rosary-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .rosary-number {
+            min-width: 150px;
+            text-align: center;
+            font-size: clamp(40px, 5vw, 64px);
+            color: #f8eed0;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px rgba(240, 209, 133, 0.2);
+        }
+
+        .rosary-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .rosary-select {
+            flex: 1;
+            min-width: 200px;
+            height: 52px;
+            border-radius: 18px;
+            border: 1px solid rgba(214, 176, 98, 0.48);
+            background: linear-gradient(135deg, rgba(17, 41, 31, 0.92), rgba(9, 21, 16, 0.92));
+            color: #f5e9c8;
+            font-size: 20px;
+            padding: 0 48px 0 18px;
+            outline: none;
+            direction: rtl;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, #e9d39b 50%), linear-gradient(135deg, #e9d39b 50%, transparent 50%);
+            background-position: calc(100% - 22px) calc(50% - 2px), calc(100% - 16px) calc(50% - 2px);
+            background-size: 6px 6px, 6px 6px;
+            background-repeat: no-repeat;
+            box-shadow: inset 0 0 0 1px rgba(214, 176, 98, 0.08);
+            cursor: pointer;
+        }
+
+        .rosary-select option {
+            background: #183f2a;
+            color: #fff;
+            padding: 12px;
+        }
+
+        .rosary-reset {
+            width: auto;
+            min-width: 110px;
+            height: 52px;
+            font-size: 22px;
+            padding: 0 18px;
+            background: rgba(15, 34, 26, 0.9);
+            border: 1px solid rgba(214, 176, 98, 0.45);
+            color: #f3dfaf;
+        }
+
+        .rosary-target {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            color: #f1e7cc;
+            font-size: 18px;
+        }
+
+        .target-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 120, 0.2);
+        }
+
+        .target-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #d7ae61, #8dc7a0);
+            border-radius: 20px;
+            transition: width 0.2s ease;
+            box-shadow: 0 0 12px rgba(214, 176, 98, 0.28);
+        }
+
+        .rosary-message {
+            margin-top: 12px;
+            text-align: center;
+            color: #f3dfaf;
+            font-size: 18px;
+            min-height: 30px;
+        }
+
+        @media (max-width: 980px) {
+            body {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            .container {
                 flex-direction: column;
-                background-size: cover;
+                height: auto;
+                min-height: 100vh;
             }
-            .mainDiv .ulParent {
+
+            .ulParent,
+            .content {
                 width: 100%;
-                height: 30%;
             }
-            body .mainDiv .ulParent ul {
+
+            .ulParent {
+                min-width: 0;
+                max-height: none;
+            }
+
+            .ulParent .mainUL {
+                height: auto;
+                overflow-y: visible;
+            }
+
+            .content {
+                min-height: 0;
+                overflow: visible;
+                display: block;
+            }
+
+            .content-area {
+                overflow: visible;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .ulParent {
+                position: sticky;
+                top: 0;
+                z-index: 5;
+                padding-top: env(safe-area-inset-top);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+            }
+
+            .ulParent input.search {
+                width: calc(100% - 24px);
+                height: 50px;
+                margin: 10px 12px 6px;
+                border-radius: 15px;
+                font-size: 18px;
+            }
+
+            .ulParent .mainUL {
+                display: flex;
+                gap: 8px;
+                height: auto;
+                padding: 6px 12px 12px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                scrollbar-width: thin;
+                overscroll-behavior-x: contain;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .ulParent .mainUL li {
+                flex: 0 0 auto;
+                width: auto;
+                min-height: 46px;
+                margin: 0;
+                padding: 6px 10px;
+                border-radius: 14px;
+                font-size: 15px;
+                white-space: nowrap;
+            }
+
+            .menu-item {
+                gap: 6px;
+            }
+
+            .menu-item-title {
+                flex: 0 0 auto;
+            }
+
+            .favorite-button {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+            }
+
+            .content .hero {
+                padding: 22px 16px 18px;
+            }
+
+            .content .hero h1 {
+                font-size: clamp(25px, 7vw, 34px);
+                margin-bottom: 8px;
+            }
+
+            .content .hero p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .hero-tools {
+                margin-top: 12px;
+            }
+
+            .theme-toggle {
+                min-height: 44px;
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+
+            .content-area {
+                padding: 14px;
+                padding-bottom: calc(20px + env(safe-area-inset-bottom));
+            }
+
+            .overview-panel,
+            .cards-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .overview-card,
+            .card {
+                padding: 15px;
+            }
+
+            .overview-card h3,
+            .card h3 {
+                font-size: 21px;
+            }
+
+            .overview-card p,
+            .overview-card li,
+            .card p,
+            .card li {
+                font-size: 16px;
+            }
+
+            .article-box {
+                margin-top: 12px;
+                padding: 14px;
+                font-size: 18px;
+            }
+
+            .smart-rosary {
+                border-radius: 18px;
+                padding: 16px 13px 13px;
+            }
+
+            .rosary-header {
+                font-size: 21px;
+                margin-bottom: 12px;
+            }
+
+            .rosary-counter {
+                gap: 12px;
+            }
+
+            .rosary-btn {
+                width: 58px;
+                height: 58px;
+                border-radius: 15px;
+                font-size: 30px;
+            }
+
+            .rosary-number {
+                min-width: 0;
+                flex: 1;
+                font-size: clamp(36px, 11vw, 52px);
+            }
+
+            .rosary-actions {
+                align-items: stretch;
+            }
+
+            .rosary-select {
+                min-width: 0;
                 width: 100%;
-                height: 100%;
-                overflow: scroll;
-                scrollbar-width: none;
-                border-radius: 0px 0px 10px 10px;
+                flex-basis: 100%;
+                height: 48px;
+                font-size: 16px;
             }
-            body .mainDiv .content {
-                width: 100%;
-                height: 70%;
+
+            .rosary-reset {
+                min-width: 96px;
+                height: 46px;
+                font-size: 17px;
             }
-            body .mainDiv .content ul {
-                height: 100%;
-            }
-            a {
+
+            .rosary-target,
+            .rosary-message {
                 font-size: 15px;
             }
-        }*/
-    </style>
-
-    <script>
-        const UL = document.querySelector(".maindivst")
-        const content = document.querySelector(".content")
-        const adhkar = [
-  { title: "دعاء الاستيقاظ", text: "الحَمْدُ لله الذي أحْيَانا بَعْدَ ما أمَاتَنَا وإلَيْهِ النُّشُور", cat: "الاستيقاظ" },
-  { title: "دعاء دخول الخلاء", text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الخُبُثِ وَالخَبَائِثِ", cat: "الخلاء" },
-  { title: "دعاء الخروج من الخلاء", text: "غُفْرَانَكَ", cat: "الخلاء" },
-  { title: "دعاء قبل الوضوء", text: "بِسْمِ الله", cat: "الوضوء" },
-  { title: "دعاء بعد الوضوء", text: "أَشْهَدُ أنْ لا إلهَ إلَّا اللهُ وَحْدَهُ لا شَرِيكَ لهُ وأَشْهَدُ أنَّ مُحَمَّدًا عَبْدُهُ ورَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ واجْعَلْنِي مِنَ المُتَطَهِّرِينَ", cat: "الوضوء" },
-  { title: "دعاء لبس الثوب", text: "الحَمْدُ لله الذي كَسَانِي هذا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي ولا قُوَّة", cat: "اللباس" },
-  { title: "دعاء دخول المسجد", text: "اللَّهُمَّ افْتَحْ لي أَبْوَابَ رَحْمَتِكَ", cat: "المسجد" },
-  { title: "دعاء الخروج من المسجد", text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ", cat: "المسجد" },
-  { title: "دعاء قبل الأكل", text: "بِسْمِ الله، فإن نسيت فقل: بِسْمِ الله في أوَّلِهِ وآخِرِهِ", cat: "الطعام" },
-  { title: "دعاء بعد الأكل", text: "الحَمْدُ لله الذي أَطْعَمَنِي هذا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي ولا قُوَّة", cat: "الطعام" },
-  { title: "دعاء الضيف لصاحب الطعام", text: "اللَّهُمَّ بَارِكْ لَهُمْ فِيمَا رَزَقْتَهُمْ واغْفِرْ لَهُمْ وارْحَمْهُمْ", cat: "الطعام" },
-  { title: "دعاء دخول المنزل", text: "بِسْمِ اللهِ وَلَجْنَا، وَبِسْمِ اللهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا", cat: "المنزل" },
-  { title: "دعاء الخروج من المنزل", text: "بِسْمِ اللهِ تَوَكَّلْتُ عَلَى اللهِ، لا حَوْلَ ولا قُوَّةَ إلَّا بالله", cat: "المنزل" },
-  { title: "دعاء ركوب السيارة", text: "سُبْحَانَ الذي سَخَّرَ لَنَا هذا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إلى رَبِّنَا لَمُنْقَلِبُونَ", cat: "السفر" },
-  { title: "دعاء السفر", text: "اللهُ أكْبَرُ، اللهُ أكْبَرُ، اللهُ أكْبَرُ، سُبْحَانَ الذي سَخَّرَ لَنَا هذا... اللَّهُمَّ إنَّا نَسْأَلُكَ في سَفَرِنَا هذا البِرَّ والتَّقْوَى", cat: "السفر" },
-  { title: "دعاء عند نزول المطر", text: "اللَّهُمَّ صَيِّبًا نَافِعًا", cat: "المطر" },
-  { title: "دعاء بعد نزول المطر", text: "مُطِرْنَا بِفَضْلِ اللهِ وَرَحْمَتِهِ", cat: "المطر" },
-  { title: "دعاء الريح", text: "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ ما فِيهَا وخَيْرَ ما أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا وشَرِّ ما فِيهَا وشَرِّ ما أُرْسِلَتْ بِهِ", cat: "الجو" },
-  { title: "دعاء عند سماع الرعد", text: "سُبْحَانَ الذي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ والمَلائِكَةُ مِنْ خِيفَتِهِ", cat: "الجو" },
-  { title: "دعاء الكرب", text: "لا إلَهَ إلَّا اللهُ العَظِيمُ الحَلِيمُ، لا إلَهَ إلَّا اللهُ رَبُّ العَرْشِ العَظِيمِ، لا إلَهَ إلَّا اللهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الأَرْضِ ورَبُّ العَرْشِ الكَرِيمِ", cat: "الكرب" },
-  { title: "دعاء الهم والحزن", text: "اللَّهُمَّ إِنِّي عَبْدُكَ وابْنُ عَبْدِكَ... مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ... أنْ تَجْعَلَ القُرْآنَ رَبِيعَ قَلْبِي", cat: "الهم" },
-  { title: "دعاء قضاء الدين", text: "اللَّهُمَّ اكْفِنِي بِحَلالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ", cat: "الدين" },
-  { title: "دعاء عند زيارة المريض", text: "لا بَأْسَ طَهُورٌ إنْ شَاءَ الله، أَسْأَلُ اللهَ العَظِيمَ رَبَّ العَرْشِ العَظِيمِ أنْ يَشْفِيَكَ - 7 مرات", cat: "المرض" },
-  { title: "دعاء العطاس", text: "إذا عطس يقول: الحَمْدُ لله، ويقول له أخوه: يَرْحَمُكَ الله، فيقول: يَهْدِيكُمُ اللهُ ويُصْلِحُ بَالَكُمْ", cat: "العطاس" },
-  { title: "دعاء قبل النوم", text: "بِاسْمِكَ اللَّهُمَّ أمُوتُ وَأَحْيَا", cat: "النوم" },
-  { title: "دعاء عند الفزع في النوم", text: "أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ غَضَبِهِ وَعِقَابِهِ وشَرِّ عِبَادِهِ وَمِنْ هَمَزَاتِ الشَّيَاطِينِ وأنْ يَحْضُرُونِ", cat: "النوم" },
-  { title: "دعاء الاستخارة", text: "اللَّهُمَّ إِنِّي أسْتَخِيرُكَ بِعِلْمِكَ وأَسْتَقْدِرُكَ بِقُدْرَتِكَ وَأَسْأَلُكَ مِنْ فَضْلِكَ العَظِيمِ...", cat: "الاستخارة" },
-  { title: "دعاء دخول السوق", text: "لا إلَهَ إلَّا اللهُ وَحْدَهُ لا شَرِيكَ لهُ، لهُ المُلْكُ ولهُ الحَمْدُ يُحْيِي ويُمِيتُ وَهُوَ حَيٌّ لا يَمُوتُ بِيَدِهِ الخَيْرُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِير", cat: "السوق" },
-  { title: "كفارة المجلس", text: "سُبْحَانَكَ اللَّهُمَّ وبِحَمْدِكَ، أشْهَدُ أنْ لا إلَهَ إلَّا أنْتَ، أسْتَغْفِرُكَ وَأَتُوبُ إلَيْكَ", cat: "المجلس" },
-  { title: "دعاء جميل شامل", text: "اللَّهُمَّ آتِنَا في الدُّنْيَا حَسَنَةً وفي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", cat: "عام" }
-];
-        function firstFunction(){
-            console.log("hello")
-            content.innerHTML = `
-        
-                <div>شهادة أن لا اله الا الله و أن محمدا رسول الله</div>
-                <div>اقام الصلاة</div>
-                <div>ايتاء الزكاة</div>
-                <div>صوم رمضان</div>
-                <div>و حج البيت لمن استطاع اليه سبيلا</div>
-            
-            `
-        }
-        function secondFunction(){
-            content.innerHTML = `
-    
-                <div>الإيمان بالله</div>
-                <div>الإيمان بالملائكة</div>
-                <div>الإيمان بالكتب السماوية</div>
-                <div>الإيمان بالرسل</div>
-                <div>الإيمان باليوم الآخر</div>
-                <div>الإيمان بالقدر خيره وشره</div>
-            
-            `
-        }
-        function namseOfAllah(){
-            content.innerHTML = `
-                        <div>الرَّحْمَٰنُ</div>
-                        <div>الرَّحِيمُ</div>
-                        <div>الْمَلِكُ</div>
-                        <div>الْقُدُّوسُ</div>
-                        <div>السَّلَامُ</div>
-                        <div>الْمُؤْمِنُ</div>
-                        <div>الْمُهَيْمِنُ</div>
-                        <div>الْعَزِيزُ</div>
-                        <div>الْجَبَّارُ</div>
-                        <div>الْمُتَكَبِّرُ</div>
-                        <div>الْخَالِقُ</div>
-                        <div>الْبَارِئُ</div>
-                        <div>الْمُصَوِّرُ</div>
-                        <div>الْغَفَّارُ</div>
-                        <div>الْقَهَّارُ</div>
-                        <div>الْوَهَّابُ</div>
-                        <div>الرَّزَّاقُ</div>
-                        <div>الْفَتَّاحُ</div>
-                        <div>الْعَلِيمُ</div>
-                        <div>الْقَابِضُ</div>
-                        <div>الْبَاسِطُ</div>
-                        <div>الْخَافِضُ</div>
-                        <div>الرَّافِعُ</div>
-                        <div>الْمُعِزُّ</div>
-                        <div>الْمُذِلُّ</div>
-                        <div>السَّمِيعُ</div>
-                        <div>الْبَصِيرُ</div>
-                        <div>الْحَكَمُ</div>
-                        <div>الْعَدْلُ</div>
-                        <div>اللَّطِيفُ</div>
-                        <div>الْخَبِيرُ</div>
-                        <div>الْحَلِيمُ</div>
-                        <div>الْعَظِيمُ</div>
-                        <div>الْغَفُورُ</div>
-                        <div>الشَّكُورُ</div>
-                        <div>الْعَلِيُّ</div>
-                        <div>الْكَبِيرُ</div>
-                        <div>الْحَفِيظُ</div>
-                        <div>الْمُقِيتُ</div>
-                        <div>الْحَسِيبُ</div>
-                        <div>الْجَلِيلُ</div>
-                        <div>الْكَرِيمُ</div>
-                        <div>الرَّقِيبُ</div>
-                        <div>الْمُجِيبُ</div>
-                        <div>الْوَاسِعُ</div>
-                        <div>الْحَكِيمُ</div>
-                        <div>الْوَدُودُ</div>
-                        <div>الْمَجِيدُ</div>
-                        <div>الْبَاعِثُ</div>
-                        <div>الشَّهِيدُ</div>
-                        <div>الْحَقُّ</div>
-                        <div>الْوَكِيلُ</div>
-                        <div>الْقَوِيُّ</div>
-                        <div>الْمَتِينُ</div>
-                        <div>الْوَلِيُّ</div>
-                        <div>الْحَمِيدُ</div>
-                        <div>الْمُحْصِي</div>
-                        <div>الْمُبْدِئُ</div>
-                        <div>الْمُعِيدُ</div>
-                        <div>الْمُحْيِي</div>
-                        <div>الْمُمِيتُ</div>
-                        <div>الْحَيُّ</div>
-                        <div>الْقَيُّومُ</div>
-                        <div>الْوَاجِدُ</div>
-                        <div>الْمَاجِدُ</div>
-                        <div>الْوَاحِدُ</div>
-                        <div>الصَّمَدُ</div>
-                        <div>الْقَادِرُ</div>
-                        <div>الْمُقْتَدِرُ</div>
-                        <div>الْمُقَدِّمُ</div>
-                        <div>الْمُؤَخِّرُ</div>
-                        <div>الْأَوَّلُ</div>
-                        <div>الْآخِرُ</div>
-                        <div>الظَّاهِرُ</div>
-                        <div>الْبَاطِنُ</div>
-                        <div>الْوَالِي</div>
-                        <div>الْمُتَعَالِي</div>
-                        <div>الْبَرُّ</div>
-                        <div>التَّوَّابُ</div>
-                        <div>الْمُنْتَقِمُ</div>
-                        <div>الْعَفُوُّ</div>
-                        <div>الرَّؤُوفُ</div>
-                        <div>مَالِكُ الْمُلْكِ</div>
-                        <div>ذُو الْجَلَالِ وَالْإِكْرَامِ</div>
-                        <div>الْمُقْسِطُ</div>
-                        <div>الْجَامِعُ</div>
-                        <div>الْغَنِيُّ</div>
-                        <div>الْمُغْنِي</div>
-                        <div>الْمَانِعُ</div>
-                        <div>الضَّارُّ</div>
-                        <div>النَّافِعُ</div>
-                        <div>النُّورُ</div>
-                        <div>الْهَادِي</div>
-                        <div>الْبَدِيعُ</div>
-                        <div>الْبَاقِي</div>
-                        <div>الْوَارِثُ</div>
-                        <div>الرَّشِيدُ</div>
-                        <div>الصَّبُورُ</div>
-                    
-            `
-        }
-        let counter = 0
-        function Zero(){
-            console.log(counter)
-            counter = 0
-            content.querySelector("button").innerHTML = counter
-            localStorage.score = JSON.stringify(counter)
-        }
-        function newScore(){
-            counter = counter+1
-            content.querySelector("button").innerHTML = counter
-            localStorage.score = JSON.stringify(counter)
-        }
-        function smartRosary(){
-            //localStorage.score = JSON.stringify(counter)
-            counter = Number.parseInt(localStorage.score)
-            content.innerHTML = `
-             <button onclick="newScore()">0</button>
-             <button onclick="Zero()">تصفير</button>
-            `
-            //content.querySelector("button").innerHTML
-            content.querySelector("button").innerHTML = counter
-            
-        }
-        //localStorage.clear()
-        
-        function MorningAndNightPrayes(){
-            content.innerHTML = `
-            
-  <div>أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ، اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ. [آية الكرسي]</div>
-  <div>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ قُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ. (3 مرات)</div>
-  <div>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ. (3 مرات)</div>
-  <div>بِسْمِ اللهِ الرَّحْمنِ الرَّحِيمِ قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ. (3 مرات)</div>
-  <div>أَصْـبَحْنا وَأَصْـبَحَ المُـلْكُ لله وَالحَمدُ لله، لا إلهَ إلاّ اللّهُ وَحدَهُ لا شَريكَ لهُ، لهُ المُـلكُ ولهُ الحَمْـد، وهُوَ على كلّ شَيءٍ قدير، رَبِّ أسْـأَلُـكَ خَـيرَ ما في هـذا اليوم وَخَـيرَ ما بَعْـدَه، وَأَعـوذُ بِكَ مِنْ شَـرِّ ما في هـذا اليوم وَشَرِّ ما بَعْـدَه، رَبِّ أَعـوذُبِكَ مِنَ الْكَسَـلِ وَسـوءِ الْكِـبَر، رَبِّ أَعـوذُ بِكَ مِنْ عَـذابٍ في النّـارِ وَعَـذابٍ في القَـبْر.</div>
-  <div>اللّهـمَّ أَنْتَ رَبِّـي لا إلهَ إلاّ أَنْتَ، خَلَقْتَنـي وَأَنا عَبْـدُك، وَأَنا عَلـى عَهْـدِكَ وَوَعْـدِكَ ما اسْتَـطَعْـت، أَعـوذُبِكَ مِنْ شَـرِّ ما صَنَـعْت، أَبـوءُ لَـكَ بِنِعْـمَتِـكَ عَلَـيَّ وَأَبـوءُ بِذَنْـبي فَاغْفـِرْ لي فَإِنَّـهُ لا يَغْـفِرُ الذُّنـوبَ إِلاّ أَنْتَ. (سيد الاستغفار)</div>
-  <div>رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـاً. (3 مرات)</div>
-  <div>اللّهُـمَّ إِنِّـي أَصْبَـحْتُ أُشْـهِدُك، وَأُشْـهِدُ حَمَلَـةَ عَـرْشِـك، وَمَلَائِكَتَكَ، وَجَمـيعَ خَلْـقِك، أَنَّـكَ أَنْـتَ اللهُ لا إلهَ إلاّ أَنْـتَ وَحْـدَكَ لا شَريكَ لَـك، وَأَنَّ ُ مُحَمّـداً عَبْـدُكَ وَرَسـولُـك. (4 مرات)</div>
-  <div>اللّهُـمَّ ما أَصْبَـَحَ بي مِـنْ نِعْـمَةٍ أَو بِأَحَـدٍ مِـنْ خَلْـقِك، فَمِـنْكَ وَحْـدَكَ لا شريكَ لَـك، فَلَـكَ الْحَمْـدُ وَلَـكَ الشُّكْـر.</div>
-  <div>حَسْبِـيَ اللّهُ لا إلهَ إلاّ هُوَ عَلَـيهِ تَوَكَّـلتُ وَهُوَ رَبُّ العَرْشِ العَظـيم. (7 مرات)</div>
-  <div>بِسـمِ اللهِ الذي لا يَضُـرُّ مَعَ اسمِـهِ شَيءٌ في الأرْضِ وَلا في السّمـاءِ وَهـوَ السّمـيعُ العَلـيم. (3 مرات)</div>
-  <div>اللّهُـمَّ بِكَ أَصْـبَحْنا وَبِكَ أَمْسَـينا، وَبِكَ نَحْـيا وَبِكَ نَمُـوتُ وَإِلَـيْكَ النُّـشُور.</div>
-  <div>أَصْبَـحْـنا عَلَى فِطْرَةِ الإسْلاَمِ، وَعَلَى كَلِمَةِ الإخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ، وَعَلَى مِلَّةِ أبِينَا إبْرَاهِيمَ حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ المُشْرِكِينَ.</div>
-  <div>سُبْحـانَ اللهِ وَبِحَمْـدِهِ عَدَدَ خَلْـقِه، وَرِضـا نَفْسِـه، وَزِنَـةَ عَـرْشِـه، وَمِـدادَ كَلِمـاتِـه. (3 مرات)</div>
-  <div>اللّهُـمَّ عافِـني في بَدَنـي، اللّهُـمَّ عافِـني في سَمْـعي، اللّهُـمَّ عافِـني في بَصَـري، لا إلهَ إلاّ أَنْـتَ. (3 مرات)</div>
-  <div>اللّهُـمَّ إِنّـي أَعـوذُ بِكَ مِنَ الْكُـفر، وَالفَـقْر، وَأَعـوذُ بِكَ مِنْ عَذابِ القَـبْر، لا إلهَ إلاّ أَنْـتَ. (3 مرات)</div>
-  <div>اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في الدُّنْـيا وَالآخِـرَة، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ العَـفْوَ وَالعـافِـيةَ في ديني وَدُنْـيايَ وَأهْـلي وَمالـي.</div>
-  <div>يَا حَيُّ يَا قيُّومُ بِرَحْمَتِكَ أسْتَغِيثُ أصْلِحْ لِي شَأنِي كُلَّهُ وَلاَ تَكِلْنِي إلَى نَفْسِي طَـرْفَةَ عَيْنٍ.</div>
-  <div>أَصْبَـحْـنا وَأَصْبَـحْ المُـلكُ للهِ رَبِّ العـالَمـين، اللّهُـمَّ إِنِّـي أسْـأَلُـكَ خَـيْرَ هـذا الـيَوْم، فَـتْحَهُ، وَنَصْـرَهُ، وَنـورَهُ وَبَـرَكَتَـهُ، وَهُـداهُ.</div>
-  <div>اللّهُـمَّ عالِـمَ الغَـيْبِ وَالشّـهادَةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كـلِّ شَـيءٍ وَمَليـكَه، أَشْهَـدُ أَنْ لا إِلـهَ إِلاّ أَنْت، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي وَمِن شَـرِّ الشَّيْـطانِ وَشِـرْكِه.</div>
-  <div>أَعـوذُ بِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق. (3 مرات)</div>
-  <div>اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ على نَبِيِّنَا مُحمَّد. (10 مرات)</div>
-  <div>اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ أَنْ نُشْرِكَ بِكَ شَيْئًا نَعْلَمُهُ، وَنَسْتَغْفِرُكَ لِمَا لَا نَعْلَمُهُ. (3 مرات)</div>
-  <div>اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنْ الْعَجْزِ وَالْكَسَلِ، وَأَعُوذُ بِكَ مِنْ الْجُبْنِ وَالْبُخْلِ، وَأَعُوذُ بِكَ مِنْ غَلَبَةِ الدَّيْنِ، وَقَهْرِ الرِّجَالِ. (3 مرات)</div>
-  <div>أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيه. (100 مرة)</div>
-  <div>لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ. (100 مرة)</div>
-  <div>سُبْحـانَ اللهِ وَبِحَمْـدِهِ. (100 مرة)</div>
-
-            `
         }
 
-        function prayTimes(){
-            fetch("https://api.aladhan.com/v1/timingsByCity?city=Giza&country=Egypt&method=5").then(
-                res => res.json()
-            ).then(data => {
-                let t = data.data.timings; // اختصار
+        @media (max-width: 380px) {
+            .content-area {
+                padding: 10px;
+            }
 
-    content.innerHTML = `
-    
-        <div><span>${t.Fajr}</span>الفجر</div>
-        <div><span>${t.Sunrise}</span>الشروق</div>
-        <div><span>${t.Dhuhr}</span>الظهر</div>
-        <div><span>${t.Asr}</span>العصر</div>
-        <div><span>${t.Maghrib}</span>المغرب</div>
-        <div><span>${t.Isha}</span>العشاء</div>
-    
+            .rosary-counter {
+                gap: 8px;
+            }
 
-
-                `
-                console.log(data)
-            })
-        }
-        function showAdhkar(){
-            content.innerHTML = ""
-            for(let i = 0; i < adhkar.length;i++){
-                let div = document.createElement("div")
-                div.className = "adhkar"
-                div.innerHTML = `
-                 <p>${adhkar[i].title}</p>
-                 <main>${adhkar[i].text}</main>
-                `
-                content.appendChild(div)
+            .rosary-btn {
+                width: 52px;
+                height: 52px;
             }
         }
-    
+    </style>
+</head>
+<body class="theme-dark">
+    <div class="container">
+        <aside class="ulParent">
+            <input type="text" class="search" placeholder="ابحث في الموسوعة" aria-label="Search">
+            <ul class="mainUL" id="categoryList"></ul>
+        </aside>
+
+        <main class="content">
+            <div class="hero">
+                <h1>الموسوعة الإسلامية</h1>
+                <p>مرجع شامل في العقيدة، الفقه، التفسير، السيرة، الأذكار، والعبادات، بأسلوب بسيط وواضح.</p>
+                <div class="hero-tools">
+                    <button class="theme-toggle" type="button" aria-label="تبديل الوضع">الوضع الليلي</button>
+                </div>
+            </div>
+            <div class="content-area" id="contentArea"></div>
+        </main>
+    </div>
+
+    <script>
+        const categoryList = document.getElementById('categoryList');
+        const contentArea = document.getElementById('contentArea');
+        const THEME_STORAGE_KEY = 'islamicEncyclopediaTheme';
+        const FAVORITES_STORAGE_KEY = 'islamicEncyclopediaFavorites';
+        const PRAYER_METHOD_STORAGE_KEY = 'islamicEncyclopediaPrayerMethod';
+        const prayerNames = [
+            { key: 'Fajr', label: 'الفجر' },
+            { key: 'Dhuhr', label: 'الظهر' },
+            { key: 'Asr', label: 'العصر' },
+            { key: 'Maghrib', label: 'المغرب' },
+            { key: 'Isha', label: 'العشاء' }
+        ];
+
+        const dailyReminders = [
+            { title: 'ذكر اليوم', text: 'من ذكر الله في قلبه، استنار به قلبه، ومن نسيه ضلّ عن طريقه.' },
+            { title: 'دعاء اليوم', text: 'اللهم اهدني فيمن هديت، وعافني فيمن عافيت، وتولني فيمن توليت.' },
+            { title: 'معلومة', text: 'الإسلام يدعو إلى العلم، والرحمة، والتوازن بين الدنيا والآخرة.' },
+            { title: 'تذكير', text: 'الركوع والسجود يفتحان باب الرحمة ويقربان العبد من ربه.' }
+        ];
+
+        const rosaryOptions = [
+            { label: 'سبحان الله', target: 33 },
+            { label: 'الحمد لله', target: 33 },
+            { label: 'الله أكبر', target: 33 },
+            { label: 'لا إله إلا الله', target: 100 },
+            { label: 'استغفر الله', target: 100 },
+            { label: 'اللهم صلّ على محمد', target: 100 }
+        ];
+
+        let rosaryCount = 0;
+        let selectedDhikr = rosaryOptions[0].label;
+        let activeSectionId = 'intro';
+        let prayerTimesState = null;
+        let prayerCoordinates = null;
+        let prayerCountdownTimer = null;
+        const ROSARY_STORAGE_KEY = 'smartRosaryState';
+
+        function getRosaryState() {
+            try {
+                const saved = JSON.parse(localStorage.getItem(ROSARY_STORAGE_KEY) || '{}');
+                return saved;
+            } catch {
+                return {};
+            }
+        }
+
+        function saveRosaryState() {
+            const state = getRosaryState();
+            state[selectedDhikr] = rosaryCount;
+            state.selectedDhikr = selectedDhikr;
+            localStorage.setItem(ROSARY_STORAGE_KEY, JSON.stringify(state));
+        }
+
+        function loadRosaryState() {
+            const state = getRosaryState();
+            const savedDhikr = state.selectedDhikr || rosaryOptions[0].label;
+            const savedCount = state[savedDhikr] ?? 0;
+            selectedDhikr = rosaryOptions.some(option => option.label === savedDhikr) ? savedDhikr : rosaryOptions[0].label;
+            rosaryCount = savedCount;
+        }
+
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY) || '[]');
+            } catch {
+                return [];
+            }
+        }
+
+        function saveFavorites(favorites) {
+            localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+        }
+
+        function toggleFavorite(sectionId) {
+            const favorites = new Set(getFavorites());
+            if (favorites.has(sectionId)) {
+                favorites.delete(sectionId);
+            } else {
+                favorites.add(sectionId);
+            }
+            saveFavorites([...favorites]);
+            populateMenu();
+            const currentSearch = document.querySelector('.search');
+            if (currentSearch && currentSearch.value.trim()) {
+                searchCategories(currentSearch.value);
+            } else {
+                renderSection(activeSectionId || 'intro');
+            }
+        }
+
+        function getDailyReminder() {
+            const today = new Date();
+            const index = (today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate()) % dailyReminders.length;
+            return dailyReminders[index];
+        }
+
+        function renderQuickTools() {
+            const favorites = getFavorites();
+            const reminder = getDailyReminder();
+            const favoriteButtons = favorites.length
+                ? favorites.map(sectionId => {
+                    const section = encyclopedia.find(item => item.id === sectionId);
+                    if (!section) return '';
+                    return `<button type="button" data-quick-section="${section.id}">${section.title}</button>`;
+                }).join('')
+                : '<p>لا توجد مفضلات حتى الآن، يمكنك حفظ أي قسم من القائمة.</p>';
+
+            return `
+                <div class="overview-panel">
+                    <div class="overview-card">
+                        <span class="mini-label">التذكير اليومي</span>
+                        <h3>${reminder.title}</h3>
+                        <p>${reminder.text}</p>
+                    </div>
+                    <div class="overview-card">
+                        <span class="mini-label">المفضلات</span>
+                        <h3>مفضلاتي</h3>
+                        <div class="quick-links">${favoriteButtons}</div>
+                    </div>
+                    <div class="overview-card prayer-card">
+                        <span class="mini-label">مواقيت الصلاة</span>
+                        <h3>مواقيت الصلاة</h3>
+                        <label for="prayerMethod">طريقة الحساب</label>
+                        <select class="prayer-method" id="prayerMethod">
+                            <option value="3">رابطة العالم الإسلامي</option>
+                            <option value="4">أم القرى</option>
+                            <option value="5">الهيئة المصرية العامة للمساحة</option>
+                            <option value="2">الجمعية الإسلامية لأمريكا الشمالية</option>
+                            <option value="1">جامعة العلوم الإسلامية، كراتشي</option>
+                        </select>
+                        <button class="prayer-load" id="loadPrayerTimes" type="button">استخدم موقعي لعرض المواقيت</button>
+                        <p class="prayer-status" id="prayerStatus" aria-live="polite">${prayerTimesState ? '' : 'يتطلب عرض المواقيت السماح بالوصول إلى موقعك.'}</p>
+                        <div class="prayer-details" id="prayerDetails"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getPrayerMethod() {
+            const availableMethods = ['1', '2', '3', '4', '5'];
+            const savedMethod = localStorage.getItem(PRAYER_METHOD_STORAGE_KEY) || '3';
+            return availableMethods.includes(savedMethod) ? savedMethod : '3';
+        }
+
+        function setPrayerStatus(message) {
+            const status = document.getElementById('prayerStatus');
+            if (status) status.textContent = message;
+        }
+
+        function parsePrayerTime(value) {
+            const match = typeof value === 'string' ? value.match(/(\d{1,2}):(\d{2})/) : null;
+            if (!match) return null;
+            return Number(match[1]) * 60 + Number(match[2]);
+        }
+
+        function updatePrayerDetails() {
+            const details = document.getElementById('prayerDetails');
+            if (!details) return;
+            details.replaceChildren();
+
+            if (!prayerTimesState) return;
+
+            const list = document.createElement('div');
+            list.className = 'prayer-list';
+
+            prayerNames.forEach(prayer => {
+                const row = document.createElement('div');
+                row.className = 'prayer-time';
+                const name = document.createElement('span');
+                name.textContent = prayer.label;
+                const time = document.createElement('strong');
+                time.textContent = prayerTimesState.timings[prayer.key];
+                row.append(name, time);
+                list.appendChild(row);
+            });
+
+            const nextPrayer = document.createElement('p');
+            nextPrayer.className = 'prayer-next';
+            const clock = new Intl.DateTimeFormat('en-GB', {
+                timeZone: prayerTimesState.timezone,
+                hour: '2-digit',
+                minute: '2-digit',
+                hourCycle: 'h23'
+            });
+            const currentParts = clock.formatToParts(new Date());
+            const currentHour = Number(currentParts.find(part => part.type === 'hour').value);
+            const currentMinute = Number(currentParts.find(part => part.type === 'minute').value);
+            const currentTotalMinutes = currentHour * 60 + currentMinute;
+            const upcoming = prayerNames
+                .map(prayer => ({
+                    ...prayer,
+                    timeInMinutes: parsePrayerTime(prayerTimesState.timings[prayer.key])
+                }))
+                .filter(prayer => prayer.timeInMinutes !== null)
+                .map(prayer => ({
+                    ...prayer,
+                    minutesUntil: (prayer.timeInMinutes - currentTotalMinutes + 1440) % 1440
+                }))
+                .sort((first, second) => first.minutesUntil - second.minutesUntil)[0];
+
+            if (upcoming) {
+                const hours = Math.floor(upcoming.minutesUntil / 60);
+                const minutes = upcoming.minutesUntil % 60;
+                nextPrayer.textContent = `الصلاة القادمة: ${upcoming.label} — ${hours} س ${minutes} د`;
+            }
+
+            details.append(list);
+            if (nextPrayer.textContent) details.append(nextPrayer);
+        }
+
+        async function loadPrayerTimes(latitude, longitude) {
+            const methodSelect = document.getElementById('prayerMethod');
+            const loadButton = document.getElementById('loadPrayerTimes');
+            if (!methodSelect || !loadButton) return;
+
+            loadButton.disabled = true;
+            setPrayerStatus('جارٍ تحميل مواقيت الصلاة...');
+            try {
+                const method = methodSelect.value;
+                const endpoint = new URL('https://api.aladhan.com/v1/timings');
+                endpoint.searchParams.set('latitude', latitude);
+                endpoint.searchParams.set('longitude', longitude);
+                endpoint.searchParams.set('method', method);
+
+                const response = await fetch(endpoint);
+                if (!response.ok) {
+                    throw new Error(`تعذر الاتصال بخدمة المواقيت (HTTP ${response.status}).`);
+                }
+
+                const result = await response.json();
+                const data = result.data;
+                if (result.code !== 200 || !data?.timings || !data?.meta?.timezone) {
+                    throw new Error('استجابت خدمة المواقيت ببيانات غير مكتملة.');
+                }
+
+                prayerTimesState = {
+                    timings: data.timings,
+                    timezone: data.meta.timezone,
+                    date: data.date?.readable || ''
+                };
+                setPrayerStatus(`${prayerTimesState.date ? `${prayerTimesState.date} · ` : ''}${prayerTimesState.timezone}`);
+                updatePrayerDetails();
+                if (prayerCountdownTimer) clearInterval(prayerCountdownTimer);
+                prayerCountdownTimer = setInterval(updatePrayerDetails, 60000);
+            } catch (error) {
+                setPrayerStatus(error instanceof Error ? error.message : 'تعذر تحميل مواقيت الصلاة.');
+            } finally {
+                loadButton.disabled = false;
+            }
+        }
+
+        function bindPrayerTimes() {
+            const methodSelect = document.getElementById('prayerMethod');
+            const loadButton = document.getElementById('loadPrayerTimes');
+            if (!methodSelect || !loadButton) return;
+
+            methodSelect.value = getPrayerMethod();
+            methodSelect.addEventListener('change', () => {
+                localStorage.setItem(PRAYER_METHOD_STORAGE_KEY, methodSelect.value);
+                if (prayerCoordinates) {
+                    loadPrayerTimes(prayerCoordinates.latitude, prayerCoordinates.longitude);
+                }
+            });
+
+            loadButton.addEventListener('click', () => {
+                if (!navigator.geolocation) {
+                    setPrayerStatus('المتصفح لا يدعم تحديد الموقع. افتح الصفحة عبر HTTPS أو استخدم متصفحاً حديثاً.');
+                    return;
+                }
+
+                loadButton.disabled = true;
+                setPrayerStatus('بانتظار إذن الموقع...');
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        prayerCoordinates = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        };
+                        loadPrayerTimes(prayerCoordinates.latitude, prayerCoordinates.longitude);
+                    },
+                    error => {
+                        const messages = {
+                            1: 'لم يتم السماح بالوصول إلى الموقع. اسمح للموقع باستخدام موقعك ثم أعد المحاولة.',
+                            2: 'تعذر تحديد موقعك. تحقق من إعدادات الموقع وحاول مرة أخرى.',
+                            3: 'انتهت مهلة تحديد الموقع. حاول مرة أخرى.'
+                        };
+                        setPrayerStatus(messages[error.code] || 'تعذر تحديد موقعك.');
+                        loadButton.disabled = false;
+                    },
+                    { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 }
+                );
+            });
+
+            if (prayerTimesState) {
+                setPrayerStatus(`${prayerTimesState.date ? `${prayerTimesState.date} · ` : ''}${prayerTimesState.timezone}`);
+                updatePrayerDetails();
+            }
+        }
+
+        function applyTheme(theme) {
+            document.body.classList.toggle('theme-light', theme === 'light');
+            document.body.classList.toggle('theme-dark', theme !== 'light');
+            const toggleBtn = document.querySelector('.theme-toggle');
+            if (toggleBtn) {
+                toggleBtn.textContent = theme === 'light' ? 'الوضع الداكن' : 'الوضع الليلي';
+            }
+        }
+
+        function setupThemeToggle() {
+            const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'dark';
+            applyTheme(savedTheme);
+            const toggleBtn = document.querySelector('.theme-toggle');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    const nextTheme = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+                    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+                    applyTheme(nextTheme);
+                });
+            }
+        }
+
+        const encyclopedia = [
+            {
+                id: 'intro',
+                title: 'مقدمة في الإسلام',
+                items: [
+                    { title: 'تعريف الإسلام', text: 'الإسلام هو الدين الذي جاء به النبي محمد صلى الله عليه وسلم، ويقوم على التوحيد، العبادة، والعدل، ويهدف إلى تحقيق السعادة في الدنيا والآخرة.' },
+                    { title: 'أركان الإسلام', text: 'الشهادة أن لا إله إلا الله وأن محمداً رسول الله، إقامة الصلاة، إيتاء الزكاة، صوم رمضان، وحج البيت من استطاع إليه سبيلاً.' },
+                    { title: 'أركان الإيمان', text: 'الإيمان بالله، ملائكته، كتبه، رسله، واليوم الآخر، والإيمان بالقدر خيره وشره.' },
+                    { title: 'الإحسان', text: 'الإحسان هو أن تعبد الله كأنك تراه، فإن لم تكن تراه فإنه يراك.' }
+                ]
+            },
+            {
+                id: 'belief',
+                title: 'العقيدة',
+                items: [
+                    { title: 'التوحيد', text: 'هو إفراد الله سبحانه وتعالى بالعبادة، والربوبية، والأسماء والصفات، والنفي عن غيره من الشرك الأكبر والأصغر.' },
+                    { title: 'القدر', text: 'القدرة الإلهية تشمل ما كان وما هو كائن، وهو من علم الله السابق، ويؤمن المسلم بأن الخير والشر بيد الله.' },
+                    { title: 'الملائكة', text: 'خلق الله الملائكة من نور، منهم جبريل، ميكائيل، عزرائيل، إسرافيل، والكرام الكاتبين.' },
+                    { title: 'الكتب السماوية', text: 'الإنجيل، التوراة، الزبور، والقرآن الكريم، وهو آخر الكتب المنزل وبه خاتمة الرسالات.' }
+                ]
+            },
+            {
+                id: 'quran',
+                title: 'القرآن الكريم',
+                items: [
+                    { title: 'القرآن', text: 'هو كلام الله المنزل على سيدنا محمد صلى الله عليه وسلم، وهو المعجزة المستمرة إلى يوم القيامة.' },
+                    { title: 'أهميته', text: 'هو المصدر الأول للتشريع، والهدى، والرحمة، والفرقان بين الحق والباطل.' },
+                    { title: 'القراءة', text: 'تلاوة القرآن عبادة عظيمة، والقراءة الصحيحة والإتقان لها أجر كبير.' },
+                    { title: 'الآيات', text: 'معظم الأوامر والنواهي في الإسلام مستندة إلى آيات القرآن الكريم.' }
+                ]
+            },
+            {
+                id: 'sunnah',
+                title: 'السنة',
+                items: [
+                    { title: 'السنة النبوية', text: 'هي أقوال النبي صلى الله عليه وسلم وأفعاله وتقريراته، وهي شرح وتطبيق للقرآن.' },
+                    { title: 'أهمية السنة', text: 'هي مصدر التشريع الثاني في الإسلام، وهي تبين الأحكام وتكمل ما ورد في القرآن.' },
+                    { title: 'الأحاديث', text: 'تُحفظ السنة عبر صحيح البخاري، صحيح مسلم، والكتب المعتمدة الأخرى.' },
+                    { title: 'الحديث الصحيح', text: 'هو ما اتصل إسناده إلى النبي صلى الله عليه وسلم ولم يشتمل على شذوذ أو علل.' }
+                ]
+            },
+            {
+                id: 'names',
+                title: 'أسماء الله الحسنى',
+                items: [
+                    { title: 'الرحمن', text: 'واسع الرحمة، يرحم جميع خلقه.' },
+                    { title: 'الرحيم', text: 'الكثير الرحمة، خاصة بالمؤمنين.' },
+                    { title: 'الملك', text: 'مالك كل شيء، صاحب الملك المطلق.' },
+                    { title: 'القدوس', text: 'المنزه عن كل عيب ونقص.' },
+                    { title: 'السلام', text: 'المعطي الأمن والسلام.' },
+                    { title: 'المؤمن', text: 'المُعطي للأمن والطمأنينة.' },
+                    { title: 'المهيمن', text: 'القائم على الأمور والسيطرة.' },
+                    { title: 'العزيز', text: 'ذو القوة والمتانة والقدرة.' },
+                    { title: 'الجبار', text: 'الذي يقهر ويغلب كل شيء.' },
+                    { title: 'المتكبر', text: 'المتعالى عن كل عيب ونقص.' },
+                    { title: 'الخالق', text: 'موجد الخلق من العدم.' },
+                    { title: 'البارئ', text: 'المبدع لكل شيء على صورة خاصة.' },
+                    { title: 'المصور', text: 'الذي خلق كل شيء وأعطاه صورته.' },
+                    { title: 'الغفار', text: 'يغفر الذنوب ويسترها.' },
+                    { title: 'القهار', text: 'الذي يقهر ويغلب دون مقاومة.' },
+                    { title: 'الوهاب', text: 'المنعم على عباده بالعطاء.' },
+                    { title: 'الرزاق', text: 'الذي يرزق الخلق جميعاً.' },
+                    { title: 'الفتاح', text: 'يفتح أبواب الرزق والرحمة.' },
+                    { title: 'العليم', text: 'العالم بكل شيء صغيره وكبيره.' },
+                    { title: 'القابض', text: 'يقبض الرزق ويضيق على من يشاء.' },
+                    { title: 'الباسط', text: 'يمدّ ويُوسع الرزق لمن يشاء.' },
+                    { title: 'الخافض', text: 'يخفض من يشاء ويضعه في مكانه.' },
+                    { title: 'الرافع', text: 'يرفع قدر المؤمنين ويعليهم.' },
+                    { title: 'المعز', text: 'يعز من يشاء ويمنحه القوة.' },
+                    { title: 'المذل', text: 'يذل من يشاء ولا يذل أحد.' },
+                    { title: 'السميع', text: 'يسمع كل الأصوات والأسرار.' },
+                    { title: 'البصير', text: 'يرى جميع الأشياء بوضوح.' },
+                    { title: 'الحكم', text: 'الحاكم العادل في كل شؤون الخلق.' },
+                    { title: 'العدل', text: 'المنصف في أحكامه.' },
+                    { title: 'اللطيف', text: 'حليم ورفيق في تدبيره.' },
+                    { title: 'الخبير', text: 'العليم بما في القلوب.' },
+                    { title: 'الحليم', text: 'الصبور في عقابه وفي حكمه.' },
+                    { title: 'العظيم', text: 'ذو العظمة والكبرياء.' },
+                    { title: 'الغفور', text: 'الكثير غفرانه للمذنبين.' },
+                    { title: 'الشكور', text: 'يشكر القليل من العبادة.' },
+                    { title: 'العلي', text: 'عظيم الشأن والرفعة.' },
+                    { title: 'الكبير', text: 'ذا الكبرياء والعظمة.' },
+                    { title: 'الحفيظ', text: 'يحفظ الخلق والأشياء.' },
+                    { title: 'المقيت', text: 'يُغذي الخلق ويرزقهم.' },
+                    { title: 'الحسيب', text: 'يكفي العباد ويحاسبهم.' },
+                    { title: 'الجليل', text: 'ذو الجلال والعظمة.' },
+                    { title: 'الكريم', text: 'الغني عن الخلق، كثير الإحسان.' },
+                    { title: 'الرقيب', text: 'المشاهد لكل شيء.' },
+                    { title: 'المجيب', text: 'يستجيب دعاء عباده.' },
+                    { title: 'الواسع', text: 'واسع الرحمة والعطاء.' },
+                    { title: 'الحكيم', text: 'ذو الحكمة في كل تدبير.' },
+                    { title: 'الودود', text: 'المحب لخلقه.' },
+                    { title: 'المجيد', text: 'الذي تستحق محامده.' },
+                    { title: 'الباعث', text: 'يبعث الخلق بعد الموت.' },
+                    { title: 'الشهيد', text: 'الحاضر على كل شيء.' },
+                    { title: 'الحق', text: 'الذي لا ريب فيه.' },
+                    { title: 'الوكيل', text: 'القائم على شؤون عباده.' },
+                    { title: 'القوي', text: 'ذي القوة الشديدة.' },
+                    { title: 'المتين', text: 'الذي لا يحتاج إلى أحد.' },
+                    { title: 'الولي', text: 'الناصر والرحيم.' },
+                    { title: 'الحميد', text: 'المحمود في كل أفعاله.' },
+                    { title: 'المحصي', text: 'يعلم عدد كل شيء.' },
+                    { title: 'المبدئ', text: 'بدأ الخلق أول مرة.' },
+                    { title: 'المعيد', text: 'يعيد الخلق بعد الفناء.' },
+                    { title: 'المحيي', text: 'يحيي الأموات والقلوب.' },
+                    { title: 'المميت', text: 'يُميت الخلق عند الأجل.' },
+                    { title: 'الحي', text: 'الذي لا يموت.' },
+                    { title: 'القيوم', text: 'القائم بنفسه وبغيره.' },
+                    { title: 'الواجد', text: 'الذي يجد ما يريد.' },
+                    { title: 'الماجد', text: 'الذي له المجد والرفعة.' },
+                    { title: 'الواحد', text: 'لا شريك له في ربوبيته.' },
+                    { title: 'الصمد', text: 'المحتاج إليه كل الخلق.' },
+                    { title: 'القادر', text: 'الذي يقدر على كل شيء.' },
+                    { title: 'المقتدر', text: 'الذي لا يمانعه مانع.' },
+                    { title: 'المقدم', text: 'يقدم ما يشاء.' },
+                    { title: 'المؤخر', text: 'يؤخر ما يشاء.' },
+                    { title: 'الأول', text: 'قبل كل شيء، لا بداية له.' },
+                    { title: 'الأخر', text: 'بعد كل شيء، لا نهاية له.' },
+                    { title: 'الظاهر', text: 'هو البين الواضح في كل شيء.' },
+                    { title: 'الباطن', text: 'هو الخفي والمبطن في الحكمة.' },
+                    { title: 'الوالي', text: 'المتولي للأمور والعباد.' },
+                    { title: 'المتعالي', text: 'العالي على كل شيء.' },
+                    { title: 'البر', text: 'المحسن والمنعم.' },
+                    { title: 'التواب', text: 'يقبل توبة العباد.' },
+                    { title: 'المنتقم', text: 'ينتقم من الظالمين.' },
+                    { title: 'العفو', text: 'يصفح عن المذنبين.' },
+                    { title: 'الرؤوف', text: 'كثير الرحمة والرفق.' },
+                    { title: 'مالك الملك', text: 'صاحب السلطان المطلق.' },
+                    { title: 'ذو الجلال والإكرام', text: 'صاحب العظمة والكريم في عطائه.' },
+                    { title: 'المقسط', text: 'الذي يقيم العدل.' },
+                    { title: 'الجامع', text: 'يجمع الخلق في يوم الحساب.' },
+                    { title: 'الغني', text: 'الذي لا يحتاج إلى أحد.' },
+                    { title: 'المانع', text: 'يمنع الضيم والعقوبة.' },
+                    { title: 'الضار', text: 'مُضِرّ من يشاء في حكمته.' },
+                    { title: 'النافع', text: 'ينفع عباده بفضله.' },
+                    { title: 'النور', text: 'المدبر للخلق بضيائه والهدى.' },
+                    { title: 'الهادي', text: 'يهدى الناس إلى طريق الحق.' },
+                    { title: 'البديع', text: 'الذي لا يشبه الخلق في أفعاله.' },
+                    { title: 'الباقي', text: 'الذي يبقى دائمًا.' },
+                    { title: 'الوارث', text: 'يبقى بعد فناء الخلق.' },
+                    { title: 'الرشيد', text: 'المهدي للخير والرشاد.' },
+                    { title: 'الصبور', text: 'المتأني في عقوبته وشفائه.' }
+                ]
+            },
+            {
+                id: 'adhkar',
+                title: 'الأذكار',
+                items: [
+                    { title: 'أذكار الصباح', text: 'تتضمن قراءة آية الكرسي، وقل أعوذ برب الفلق، وقل أعوذ برب الناس، والاستغفار، وذكر الله بالصلاة على النبي صلى الله عليه وسلم.' },
+                    { title: 'أذكار المساء', text: 'هي من أفضل الطاعات بعد اليوم، وتُستحب قراءتها في المساء لتحصين المسلم من الشر وتقوية الإيمان.' },
+                    { title: 'استغفار', text: 'اللهم أغفر لي، وتب علي، واغفر ذنبي، فإن الاستغفار من أعظم الأسباب في تطهير القلب وزيادة الرزق.' },
+                    { title: 'آية الكرسي', text: 'اللهم إني أسألك أن تجعلني من أهل الجنة، وآية الكرسي من أعظم آيات القرآن في التوحيد والرحمة.' },
+                    { title: 'دعاء الخروج من المنزل', text: 'بسم الله، توكلت على الله ولا حول ولا قوة إلا بالله، اللهم إني أعوذ بك أن أضِل أو أُضَل أو أَظْلِم أو أُظْلَم أو أجهل أو يُجهل علي.' },
+                    { title: 'دعاء دخول المنزل', text: 'بسم الله ولجنا وبسم الله خرجنا وعلى ربنا توكلنا، اللهم إني أسألك خير المولج وخير المخرج.' },
+                    { title: 'دعاء النوم', text: 'باسمك ربي وضعت جنبي، وبك أرفعه، إن أمسكت نفسي فاغفر لها، وإن أرسلتها فاحفظها بما تحفظ به عبادك الصالحين.' },
+                    { title: 'دعاء الاستيقاظ', text: 'الحمد لله الذي أحيانا بعد ما أماتنا وإليه النشر، اللهم لك الحمد أنت ربي وربّ كل شيء.' },
+                    { title: 'دعاء الطعام', text: 'بسم الله، اللهم بارك لنا فيما رزقتنا، وقل ما شاء الله، واغفر لي ولأسرتي ذنوبنا.' },
+                    { title: 'دعاء الشكر', text: 'اللهم لك الحمد كما ينبغي لجلال وجهك وعظيم سلطانك، وأستغفرك وأتوب إليك.' },
+                    { title: 'دعاء الخوف والقلق', text: 'اللهم إني أعوذ بك من الهم والحزن، والضعف والكسل، والبخل والجبن، وضَلَعِ الدّين، وغلبة الرجال.' },
+                    { title: 'دعاء الحاجة', text: 'اللهم إني أسألك خيرها، وأعوذ بك من شرها، اللهم لا تدع لي ذنباً إلا غفرته، ولا هما إلا فرجته.' },
+                    { title: 'دعاء دخول المسجد', text: 'بسم الله، والصلاة والسلام على رسول الله، اللهم افتح لي أبواب رحمتك، واغفر لي ذنوبي.' },
+                    { title: 'دعاء الخروج من المسجد', text: 'بسم الله، والصلاة والسلام على رسول الله، اللهم إني أسألك من فضلك، وأعوذ بك من شر ما عملت.' },
+                    { title: 'دعاء السفر', text: 'سبحان الذي سخر لنا هذا وما كنا له مقرنين، وإنا إلى ربنا لمنقلبون، اللهم هون علينا السفر.' },
+                    { title: 'دعاء العطاس', text: 'يُحمد الله على كل حال، ومن قال: يرحمك الله، قال: يهديكم الله ويصلح بالكم.' },
+                    { title: 'دعاء رؤية الهلال', text: 'اللهم أهله علينا بالأمن والإيمان، والسلامة والإسلام، وربّك وأنت خير المولودين.' },
+                    { title: 'دعاء الريح', text: 'اللهم إني أسألك خيرها، وخير ما فيها، وخير ما أرسلت به، وأعوذ بك من شرها، وشر ما فيها، وشر ما أرسلت به.' },
+                    { title: 'دعاء المرض', text: 'اللهم رب الناس، أذهب البأس، اشف وأنت الشافي، لا شفاء إلا شفاؤك، شفاءً لا يغادر سقماً.' },
+                    { title: 'دعاء التوبة', text: 'توبت إلى الله من كل ذنب، وأستغفر الله العظيم، وأتوب إليه.' },
+                    { title: 'دعاء عند رؤية الكوكب أو السماء', text: 'سبحان الذي خلق هذا كله، لا إله إلا الله، الحمد لله الذي بفضله تتحقق الأشياء.' },
+                    { title: 'دعاء قبل الصلاة', text: 'اللهم باعد بيني وبين خطاياي كما باعدت بين المشرق والمغرب، اللهم اغسلني بها من الذنوب.' },
+                    { title: 'دعاء بعد الصلاة', text: 'اللهم ربنا لك الحمد، كما يليق بجلال وجهك وعظيم سلطاك، اغفر لي ما قدمت وما أخرت.' },
+                    { title: 'دعاء دخول الجامعة أو العمل', text: 'اللهم لا تجعل هذا اليوم بداية لخطبة أو حسرة، وبارك لي في ما رزقتني.' },
+                    { title: 'دعاء الخروج إلى السوق', text: 'بسم الله، اللهم إني أعوذ بك من شر ما دخلت فيه ومن شر ما خرجت منه.' },
+                    { title: 'دعاء الهم', text: 'اللهم إني أعوذ بك من الهم والحزن، وأعوذ بك من العجز والكسل، وأعوذ بك من البخل والجبن.' },
+                    { title: 'دعاء الفرج', text: 'اللهم فرج عني كربتي، وسهل علي أمري، واكشف ضري، واغفر لي ذنبي.' },
+                    { title: 'دعاء السلامة', text: 'اللهم احفظني من كل سوء، واغفر لي، واهدني، وارزقني ما أحب وتقبل مني.' },
+                    { title: 'دعاء القنوت', text: 'اللهم إنا نسألك العافية في الدنيا والآخرة، ونعوذ بك من عذاب النار.' },
+                    { title: 'دعاء الرزق', text: 'اللهم ارزقني رزقاً طيباً، وبارك لي في رزقي، واغفر لي ولوالدي.' },
+                    { title: 'دعاء الفزع', text: 'حسبنا الله ونعم الوكيل، نعم المولى ونعم النصير.' },
+                    { title: 'دعاء السلامة من الشيطان', text: 'أعوذ بالله من الشيطان الرجيم، ومن شر الوسواس الخناس.' },
+                    { title: 'دعاء الشدة', text: 'اللهم لا تكلني إلى نفسي طرفة عين، واصرف عني ما يؤذيني.' },
+                    { title: 'دعاء عند السجود', text: 'سبحان ربي الأعلى، اللهم اغفر لي، وارحمني، واهدني، وعافني، و ارزقني.' },
+                    { title: 'دعاء عند الركوع', text: 'سبحان ربي العظيم وبحمده، اللهم اغفر لي، ورحمني، و ارزقني.' },
+                    { title: 'دعاء عند استقبال القبلة', text: 'اللهم إني أسألك من فضلك، وأعوذ بك من شر ما أعددته لي.' },
+                    { title: 'دعاء عند رؤية الماء', text: 'اللهم بارك لنا فيه، واغفر لنا، وأرزقنا من خيره.' },
+                    { title: 'دعاء عند رؤية النخل', text: 'اللهم بارك لنا في رزقنا وفي ثمراتنا، وبارك في أموالنا.' },
+                    { title: 'دعاء عند دخول السوق', text: 'اللهم لا تجعل السوق مقاما للغفلة، واغفر لي ما أكون قد أخطأت فيه.' },
+                    { title: 'دعاء عند الخروج من الخلاء', text: 'غفرانك، الحمد لله الذي أذهب عني الأذى وعافاني.' },
+                    { title: 'دعاء عند قضاء الحاجة', text: 'اللهم إني أعوذ بك من الخبث والخبائث.' },
+                    { title: 'دعاء عند دخول الخلاء', text: 'بسم الله، اللهم إني أعوذ بك من الخبث والخبائث.' },
+                    { title: 'دعاء لحفظ الدين', text: 'اللهم اهدني فيمن هديت، وعافني فيمن عافيت، وتولني فيمن توليت.' },
+                    { title: 'دعاء لحفظ النفس', text: 'اللهم إني أعوذ بك من شر نفسي، ومن سخطك ومن غضبك.' },
+                    { title: 'دعاء لراحة القلب', text: 'اللهم اشرح لي صدري، ويسر لي أمري، واغفر لي ذنبي.' },
+                    { title: 'دعاء للرزق الواسع', text: 'اللهم بارك لي في ما رزقتني، وأوسع علي من فضلك.' },
+                    { title: 'دعاء للطمأنينة', text: 'اللهم ارحم قلبي، وأزل عنه الهم، وضمن لي الأمن والطمأنينة.' },
+                    { title: 'دعاء لتيسير الأمور', text: 'اللهم لا تسلط علي ما لا أملك، ويسر لي كل صعب في أمري.' },
+                    { title: 'دعاء عند بداية السنة', text: 'اللهم تقبل منا، واغفر لنا، وبارك لنا في الجديد.' },
+                    { title: 'دعاء عند نهاية اليوم', text: 'اللهم إني أسألك أن أكون من المقبولين في يومي هذا، وأن تغفر لي.' },
+                    { title: 'دعاء عند الافتتاح', text: 'بسم الله، الحمد لله، لا قوة إلا بالله، ما شاء الله.' },
+                    { title: 'دعاء للولد', text: 'اللهم بارك له في رزقه، واهده إلى الخير، واحفظه من شر الشيطان.' },
+                    { title: 'دعاء للزوجين', text: 'اللهم بارك بينهما ووفقهما إلى ما يرضيك.' },
+                    { title: 'دعاء لتقوية الإيمان', text: 'اللهم ثبت قلبي على دينك، وزدني إيماناً، وعملًا صالحاً.' },
+                    { title: 'دعاء للشفاء', text: 'اللهم اشفِني شفاءً لا يغادر سقماً، واصرف عني ما يضرني.' },
+                    { title: 'دعاء للمريض', text: 'اللهم اغفر له، وارحمه، وعافه، وأدخله الجنة.' },
+                    { title: 'دعاء الصبر', text: 'اللهم أعنا على الصبر، وطهر قلوبنا من الحزن.' },
+                    { title: 'دعاء للعلم', text: 'اللهم علمنا ما ينفعنا، وانفعنا بما علمتنا، وزدنا علماً.' },
+                    { title: 'دعاء للنجاة', text: 'اللهم نجنا من النار، وادخلنا الجنة، واغفر لنا.' },
+                    { title: 'دعاء لأهل البيت', text: 'اللهم بارك فيهم، واغفر لهم، واهدهم، واغرس في قلوبهم الإيمان.' },
+                    { title: 'دعاء لأهل المسلمين', text: 'اللهم أصلح أهل الإيمان، ووفقهم إلى ما يرضيك.' },
+                    { title: 'دعاء لحفظ الأمانة', text: 'اللهم احفظني من أن أضيع الأمانة، ووفقني للأعمال الصالحة.' },
+                    { title: 'دعاء عند السهو', text: 'سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر.' },
+                    { title: 'دعاء عند الضيق', text: 'يا حي يا قيوم برحمتك أستغيث، أصلح لي شأني كله.' },
+                    { title: 'دعاء عند الفرح', text: 'الحمد لله الذي بنعمته تتم الصالحات.' },
+                    { title: 'دعاء عند الحزن', text: 'اللهم إني أعوذ بك من الغم والحزن، وأعوذ بك من اليأس والقنوط.' },
+                    { title: 'دعاء عند الغضب', text: 'أعوذ بالله من الشيطان الرجيم، وأستغفر الله.' },
+                    { title: 'دعاء عند الجوع', text: 'اللهم إني أسألك من رزقك الحلال الطيب، واغفر لي.' },
+                    { title: 'دعاء عند العطش', text: 'بسم الله، الحمد لله، اللهم بارك لنا في الماء واغفر لنا.' },
+                    { title: 'دعاء عند وجود البلاء', text: 'إنا لله وإنا إليه راجعون، اللهم أجرنا في مصيبتنا، واخلفنا خيراً منها.' },
+                    { title: 'دعاء عند كشف البلاء', text: 'الحمد لله الذي عافاني مما ابتلاك به وفضّلني على كثير من خلقه.' },
+                    { title: 'دعاء عند رؤية المطر', text: 'اللهم صيبا نافعا، اللهم اسق عبادك وبهائمك، وانشر رحمتك.' },
+                    { title: 'دعاء عند رؤية الحليب أو الطعام', text: 'اللهم بارك لنا فيه، واطعمنا به خيراً.' },
+                    { title: 'دعاء عند رؤية الجراح', text: 'اللهم اشفِ مَن اشتكى، وعافِ مَن تضرر.' },
+                    { title: 'دعاء عند الصباح', text: 'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.' },
+                    { title: 'دعاء عند المساء', text: 'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.' },
+                    { title: 'دعاء عند البكاء', text: 'اللهم ارحم قلباً بكى لذكرك، واغفر له.' },
+                    { title: 'دعاء عند سماع الآذان', text: 'اللهم رب هذه الدعوة التامة، والصلاة القائمة، آتِ محمدًا الوسيلة والفضيلة.' },
+                    { title: 'دعاء عند رؤية الجدار أو البناء', text: 'اللهم بارك في هذا البيت وفي أهله، واغفر لنا.' },
+                    { title: 'دعاء عند المرور على القبور', text: 'السلام عليكم أهل الديار من المؤمنين والمسلمين، ويرحم الله المستقدمين منا والمستأخرين.' },
+                    { title: 'دعاء عند دخول الحمام', text: 'بسم الله، اللهم إني أعوذ بك من الخبث والخبائث.' },
+                    { title: 'دعاء عند الخروج من الحمام', text: 'غفرانك، الحمد لله الذي أذهب عني الأذى وعافاني.' },
+                    { title: 'دعاء عند لقاء الناس', text: 'اللهم بارك في لقائنا، وجعلنا سبباً للخير.' },
+                    { title: 'دعاء عند التحدث', text: 'اللهم اجعل كلامي خيراً، وقولي حجةً، واغفر لي ما قلت.' },
+                    { title: 'دعاء عند سوء الظن', text: 'اللهم أذهب عني سوء الظن، وأصلح قلبي.' },
+                    { title: 'دعاء عند المذاكرة', text: 'اللهم انفعني بما علمتني، وعلمني ما ينفعني.' },
+                    { title: 'دعاء عند المواعيد', text: 'اللهم يسر لي كل أمر، وبارك لي فيه.' },
+                    { title: 'دعاء عند الندم', text: 'اللهم اغفر لي ما مضى، واهدني لما بقي.' },
+                    { title: 'دعاء عند الجوع', text: 'اللهم أطعمني ما يشبعني، وبارك لي فيه.' },
+                    { title: 'دعاء عند الملل', text: 'اللهم اشرح صدري، وبدل ضيق قلبي بفرحٍ وطمأنينة.' },
+                    { title: 'دعاء عند النوم في السفر', text: 'اللهم احفظني في سفري، واغفر لي في رجوعي.' },
+                    { title: 'دعاء عند الذهاب للمدرسة', text: 'اللهم اكتب لي فيه النفع والبركة، ووقني من كل شر.' },
+                    { title: 'دعاء عند العودة من المدرسة', text: 'اللهم اجعل هذا اليوم خيرا، وبارك في عملي.' },
+                    { title: 'دعاء عند المواصلات', text: 'اللهم ارحم من يسير معنا، وبلّغنا إلى المقصود بأمان.' },
+                    { title: 'دعاء عند الاختبار', text: 'اللهم وفقني لما تحبه وترضاه، وبارك لي في علمي.' },
+                    { title: 'دعاء عند التردد', text: 'اللهم اهدني إلى أقرب الطريق، ووفقني لخير ما تريد.' },
+                    { title: 'دعاء عند الدخول في العمل', text: 'بسم الله، اللهم بارك في عملي، واغفر لي ذنوبي.' },
+                    { title: 'دعاء عند الخروج من العمل', text: 'الحمد لله الذي وفقني في هذا اليوم، وبلغني ما طلبت.' },
+                    { title: 'دعاء عند زيارة العائلة', text: 'اللهم اجعلها رحمةً وبركةً، وبارك في أهلها.' },
+                    { title: 'دعاء عند الاحتياج إلى الهداية', text: 'اللهم اهدني إلى صراطك المستقيم، ووفّقني للخير.' },
+                    { title: 'دعاء للاسترخاء', text: 'اللهم ارحم قلبي، وسهل لي ما أحتاج من فرج.' }
+                ]
+            },
+            {
+                id: 'worship',
+                title: 'العبادات',
+                items: [
+                    { title: 'الصلاة', text: 'هي عمود الدين، تُقام في أوقاتها المحددة، وهي اتصال مباشر بين العبد وربه.' },
+                    { title: 'الصيام', text: 'رمضان هو شهر الصيام، ومن فروعه الصبر والتقوى والرحمة.' },
+                    { title: 'الزكاة', text: 'فرض مالي يخرج من مال المسلم عند بلوغ النصاب وحولان الحول.' },
+                    { title: 'الحج', text: 'فريضة على من أطاقها، وتجدد التوبة والعبادة في بيت الله الحرام.' }
+                ]
+            },
+            {
+                id: 'fiqh',
+                title: 'الفقه',
+                items: [
+                    { title: 'طهارة', text: 'الوضوء والغسل والتيمم من أحكام الطهارة التي تتهيأ بها الصلاة.' },
+                    { title: 'صلاة الجمعة', text: 'هي صلاة واجبة جماعة في يوم الجمعة، مع الخطبة.' },
+                    { title: 'الزواج', text: 'الزواج سُنّة مَحْمودة يهدف إلى استقرار الأسرة وتنشئة الأبناء.' },
+                    { title: 'المعاملات', text: 'تشمل البيع، الربا، المعاوضات، والإحسان في التعامل مع الناس.' }
+                ]
+            },
+            {
+                id: 'history',
+                title: 'السيرة والرحلة',
+                items: [
+                    { title: 'مولد النبي محمد صلى الله عليه وسلم', text: 'وُلد في مكة المكرمة في شهر ربيع الأول، وكان يقال له: محمد، وكان اسمه محمداً قبل البعثة، وولد في بيت كريم من قريش، وكان أبوه عبد الله مات قبل مولده، وكانت أمه آمنة بنت وهب تربيه في طفولته بحنان ووقار.' },
+                    { title: 'نشأته في مكة', text: 'نشأ النبي صلى الله عليه وسلم في مكة بين آبائه وأهله، وكان معروفاً بالصدق والأمانة، وكان يُعرف في قومه باسم الأمين، وكان محبباً إلى الناس، واشتغل بالرعي في صباه ثم أصبح عهداً مع خديجة رضي الله عنها في التجارة.' },
+                    { title: 'الرسالة والنبوة', text: 'عندما بلغ الأربعين من عمره، نزل عليه الوحي في غار حراء، وكان أول ما نزل: اقرأ باسم ربك الذي خلق، وبدأت الرسالة في مكة، وكان أول من آمن به خديجة رضي الله عنها، ثم أبو بكر رضي الله عنه، وصهيب، وبلال، وعمار، وسميرة، وغيرهم.' },
+                    { title: 'الدعوة في مكة', text: 'دعوة النبي صلى الله عليه وسلم في مكة كانت صعبة، إذ كثر أذى المشركين، وكانوا يضربونه ويؤذونه، لكنه كان صبراً، يذكر الله، ويستمر في الدعوة، فقام ببيان التوحيد وتكذيب الشرك، وجاءت آيات كثيرة تدعو إلى الإيمان والعدل والرحمة.' },
+                    { title: 'الهجرة إلى المدينة', text: 'هاجر النبي صلى الله عليه وسلم إلى المدينة المنورة مع أبي بكر رضي الله عنه بعد أن أصيب المسلمون بأذى شديد، وكانت الهجرة نقطة تحول في التاريخ الإسلامي، إذ أسست المدينة دولة إسلامية قائمة على الإيمان والعدل.' },
+                    { title: 'العهد المدني', text: 'في المدينة بدأ النبي صلى الله عليه وسلم في تنظيم المجتمع، وبني المسجد النبوي، ووضع مؤسسات الشورى والعدل، وغرس روابط الأخوة بين المهاجرين والأنصار، وبدأ بناء الدولة الإسلامية على التوحيد والرحمة.' },
+                    { title: 'غزواته وفتح مكة', text: 'خاض النبي صلى الله عليه وسلم غزوات عديدة، منها بدر، أحد، الخندق، مؤتة، وفتح مكة، وكانت هذه المعارك تظهر العزّة والرحمة في نفس رسول الله، فقد عفا عن كثير من أعدائه بعد الفتح، وفتح مكة في العام الثامن من الهجرة.' },
+                    { title: 'خاتمة الرسالة', text: 'في العام العاشر من الهجرة، أُرسل النبي صلى الله عليه وسلم إلى الناس رسالة الإسلام كاملة، وفي نفس العام نزلت آية: اليوم أكملت لكم دينكم، وكان هذا إيذاناً بتمام الرسالة، وبيّن أن الدين الإسلامي كامل وشامل.' },
+                    { title: 'الرحمة للعالمين', text: 'كان النبي صلى الله عليه وسلم رحمة للعالمين، فعلى الرغم من الصبر والنهضة، كان يرحم الصغار، ويؤدب الكبار، ويعطي للمحتاجين، ويصل الرحم، ويقول: ما نالني الضرب إلا في سبيل الله، وكان مظهراً للرفق والحياء والرحمة.' },
+                    { title: 'أخلاقه', text: 'كانت أخلاق النبي صلى الله عليه وسلم عظيمة: الصدق، الأمانة، الحلم، الشجاعة، الوفاء، العفو، الصبر، والرحمة، وهو القدوة في كل شيء، من الصلاة إلى القول والعمل، ومن العدل إلى المعاملة.' },
+                    { title: 'الصحابة', text: 'كان صحابة النبي صلى الله عليه وسلم خير أمة، وقد آمنوا به، جاهدوا معه، وكتبوا السنة من أقواله وأفعاله، وهم من مشهد المدينة ومكة والذين رافقوا رسول الله في السفر والحرب والهدنة.' },
+                    { title: 'الخلفاء الراشدون', text: 'بعد وفاة النبي صلى الله عليه وسلم، قام أبو بكر الصديق، ثم عمر بن الخطاب، ثم عثمان بن عفان، ثم علي بن أبي طالب رضي الله عنهم، وغرسوا منهج التوحيد والعدل، وأسسوا الدولة الإسلامية في أبعادها السياسية والشرعية.' },
+                    { title: 'الرسالة الخالدة', text: 'لا تزال سيرة النبي صلى الله عليه وسلم حيّة في قلوب المؤمنين، فهي مصدر نور، وهدى، ورحمة، وتعلّم لا تنتهي، ومن يقرأ سيرته يفهم كيف يُحسن الإنسان أن يكون عابدًا، أخًا، زعيمًا، وقائدًا.' }
+                ]
+            },
+            {
+                id: 'ethics',
+                title: 'الأخلاق',
+                items: [
+                    { title: 'الصدق', text: 'الصدق يفتح القلوب، ويقوي المجتمع، ويُشيد الثقة بين الناس.' },
+                    { title: 'الرحمة', text: 'رحمة الله في الأرض تُظهر في تعاملات المسلم مع خلق الله.' },
+                    { title: 'الصبر', text: 'الصبر من أعظم خصال المؤمن، خاصة في الأزمات والشدائد.' },
+                    { title: 'الحياء', text: 'الحياء يمنع المسلم من المعاصي ويصون عرضه وكرامته.' }
+                ]
+            }
+        ];
+
+        function getSelectedDhikrTarget() {
+            const option = rosaryOptions.find(item => item.label === selectedDhikr) || rosaryOptions[0];
+            return option.target;
+        }
+
+        function updateRosaryStatus() {
+            const target = getSelectedDhikrTarget();
+            const progress = Math.min((rosaryCount / target) * 100, 100);
+            const messageEl = document.getElementById('rosaryMessage');
+            const targetFill = document.getElementById('targetFill');
+
+            if (targetFill) {
+                targetFill.style.width = `${progress}%`;
+            }
+
+            saveRosaryState();
+
+            if (messageEl) {
+                if (rosaryCount === 0) {
+                    messageEl.textContent = 'ابدأ بذكر الله وبارك في وقتك.';
+                } else if (rosaryCount < target) {
+                    messageEl.textContent = `${rosaryCount} / ${target} تم العد حتى الآن.`;
+                } else {
+                    messageEl.textContent = 'تم الوصول إلى العدد المطلوب، بارك الله فيك.';
+                }
+            }
+        }
+
+        function renderRosaryWidget() {
+            const target = getSelectedDhikrTarget();
+            const progress = Math.min((rosaryCount / target) * 100, 100);
+
+            return `
+                <div class="smart-rosary">
+                    <div class="rosary-header">
+                        <span>المسبحة الذكية</span>
+                        <span style="font-size:20px; color:#fff4cc;">${selectedDhikr}</span>
+                    </div>
+
+                    <div class="rosary-counter">
+                        <button class="rosary-btn" data-action="minus" aria-label="Decrease count">−</button>
+                        <div class="rosary-number" id="rosaryNumber">${rosaryCount}</div>
+                        <button class="rosary-btn" data-action="plus" aria-label="Increase count">+</button>
+                    </div>
+
+                    <div class="rosary-actions">
+                        <select class="rosary-select" id="rosarySelect">
+                            ${rosaryOptions.map(option => `
+                                <option value="${option.label}" ${option.label === selectedDhikr ? 'selected' : ''}>${option.label}</option>
+                            `).join('')}
+                        </select>
+                        <button class="rosary-btn rosary-reset" data-action="reset" aria-label="Reset count">إعادة</button>
+                    </div>
+
+                    <div class="rosary-target">
+                        <span>الهدف: ${target}</span>
+                        <span>${rosaryCount} / ${target}</span>
+                    </div>
+
+                    <div class="target-bar">
+                        <div class="target-fill" id="targetFill" style="width: ${progress}%;"></div>
+                    </div>
+
+                    <div class="rosary-message" id="rosaryMessage">ابدأ بذكر الله وبارك في وقتك.</div>
+                </div>
+            `;
+        }
+
+        function bindRosaryEvents() {
+            const plusBtn = document.querySelector('[data-action="plus"]');
+            const minusBtn = document.querySelector('[data-action="minus"]');
+            const resetBtn = document.querySelector('[data-action="reset"]');
+            const selectEl = document.getElementById('rosarySelect');
+
+            if (plusBtn) {
+                plusBtn.addEventListener('click', () => {
+                    rosaryCount += 1;
+                    updateRosaryStatus();
+                    const numberEl = document.getElementById('rosaryNumber');
+                    if (numberEl) numberEl.textContent = rosaryCount;
+                    const targetLabel = document.querySelector('.rosary-target span:last-child');
+                    if (targetLabel) {
+                        const target = getSelectedDhikrTarget();
+                        targetLabel.textContent = `${rosaryCount} / ${target}`;
+                    }
+                });
+            }
+
+            if (minusBtn) {
+                minusBtn.addEventListener('click', () => {
+                    rosaryCount = Math.max(0, rosaryCount - 1);
+                    updateRosaryStatus();
+                    const numberEl = document.getElementById('rosaryNumber');
+                    if (numberEl) numberEl.textContent = rosaryCount;
+                    const targetLabel = document.querySelector('.rosary-target span:last-child');
+                    if (targetLabel) {
+                        const target = getSelectedDhikrTarget();
+                        targetLabel.textContent = `${rosaryCount} / ${target}`;
+                    }
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    rosaryCount = 0;
+                    updateRosaryStatus();
+                    const numberEl = document.getElementById('rosaryNumber');
+                    if (numberEl) numberEl.textContent = rosaryCount;
+                    const targetLabel = document.querySelector('.rosary-target span:last-child');
+                    if (targetLabel) {
+                        const target = getSelectedDhikrTarget();
+                        targetLabel.textContent = `${rosaryCount} / ${target}`;
+                    }
+                });
+            }
+
+            if (selectEl) {
+                selectEl.addEventListener('change', (event) => {
+                    const state = getRosaryState();
+                    state[selectedDhikr] = rosaryCount;
+                    selectedDhikr = event.target.value;
+                    rosaryCount = state[selectedDhikr] ?? 0;
+                    const widget = renderRosaryWidget();
+                    const currentSmartRosary = document.querySelector('.smart-rosary');
+                    if (currentSmartRosary) {
+                        currentSmartRosary.outerHTML = widget;
+                        bindRosaryEvents();
+                        saveRosaryState();
+                    }
+                });
+            }
+        }
+
+        function bindQuickActions() {
+            document.querySelectorAll('[data-quick-section]').forEach(button => {
+                button.addEventListener('click', () => {
+                    renderSection(button.getAttribute('data-quick-section'));
+                });
+            });
+            bindPrayerTimes();
+        }
+
+        function renderCards(items) {
+            return `
+                <div class="cards-grid">
+                    ${items.map(item => `
+                        <article class="card">
+                            <h3>${item.title}</h3>
+                            <p>${item.text}</p>
+                        </article>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function normalizeSearchText(value) {
+            return value
+                .toLowerCase()
+                .replace(/[إأآا]/g, 'ا')
+                .replace(/[ة]/g, 'ة')
+                .replace(/[ى]/g, 'ي')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function searchCategories(value) {
+            const rawValue = value.trim();
+            if (!rawValue) {
+                renderSection('intro');
+                return;
+            }
+
+            const normalized = normalizeSearchText(rawValue);
+            const searchTerms = normalized.split(' ').filter(Boolean);
+
+            const filtered = encyclopedia
+                .map(section => {
+                    const matchingItems = section.items.filter(item => {
+                        const title = normalizeSearchText(item.title);
+                        const text = normalizeSearchText(item.text);
+                        const sectionTitle = normalizeSearchText(section.title);
+
+                        return searchTerms.every(term =>
+                            sectionTitle.includes(term) ||
+                            title.includes(term) ||
+                            text.includes(term)
+                        );
+                    });
+
+                    return {
+                        ...section,
+                        items: matchingItems
+                    };
+                })
+                .filter(section => section.items.length > 0 || normalizeSearchText(section.title).includes(normalized));
+
+            if (!filtered.length) {
+                contentArea.innerHTML = `
+                    ${renderRosaryWidget()}
+                    ${renderQuickTools()}
+                    <div class="article-box">
+                        <h3 style="color:#f6d977; margin-bottom: 12px;">لا توجد نتائج</h3>
+                        <p>جرب كلمات مثل: الصلاة، القرآن، الصبر، التوحيد، الحج، الأذكار</p>
+                    </div>
+                `;
+                bindRosaryEvents();
+                bindQuickActions();
+                return;
+            }
+
+            contentArea.innerHTML = `
+                ${renderRosaryWidget()}
+                ${renderQuickTools()}
+                ${filtered.map(section => `
+                    <div class="article-box">
+                        <h3 style="color:#f6d977; margin-bottom: 12px;">${section.title}</h3>
+                        ${renderCards(section.items)}
+                    </div>
+                `).join('')}
+            `;
+            bindRosaryEvents();
+            bindQuickActions();
+        }
+
+        function renderSection(id) {
+            const section = encyclopedia.find(item => item.id === id) || encyclopedia[0];
+            activeSectionId = section.id;
+            contentArea.innerHTML = `
+                ${renderRosaryWidget()}
+                ${renderQuickTools()}
+                <div class="article-box">
+                    <h3 style="color:#f6d977; margin-bottom: 12px;">${section.title}</h3>
+                    ${renderCards(section.items)}
+                </div>
+            `;
+            bindRosaryEvents();
+            bindQuickActions();
+        }
+
+        function populateMenu() {
+            categoryList.innerHTML = '';
+            const favorites = new Set(getFavorites());
+
+            encyclopedia.forEach(section => {
+                const li = document.createElement('li');
+                li.className = `menu-item ${activeSectionId === section.id ? 'active' : ''}`;
+
+                const title = document.createElement('span');
+                title.className = 'menu-item-title';
+                title.textContent = section.title;
+
+                const favoriteBtn = document.createElement('button');
+                favoriteBtn.type = 'button';
+                favoriteBtn.className = `favorite-button ${favorites.has(section.id) ? 'active' : ''}`;
+                favoriteBtn.setAttribute('aria-label', favorites.has(section.id) ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة');
+                favoriteBtn.textContent = favorites.has(section.id) ? '★' : '☆';
+                favoriteBtn.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    toggleFavorite(section.id);
+                });
+
+                li.appendChild(title);
+                li.appendChild(favoriteBtn);
+                li.addEventListener('click', () => renderSection(section.id));
+                categoryList.appendChild(li);
+            });
+        }
+
+        document.querySelector('.search').addEventListener('input', (event) => {
+            searchCategories(event.target.value);
+        });
+
+        setupThemeToggle();
+        loadRosaryState();
+        populateMenu();
+        renderSection('intro');
     </script>
 </body>
 </html>
